@@ -22,15 +22,15 @@
       </div>
     </section>
 
-    <div class="mx-auto px-4 sm:px-6 lg:px-11 mt-5 md:mt-10">
+    <div class="mx-auto md:px-11 mt-5 md:mt-10">
       <!-- Header -->
-      <div class="space-x-3">
+      <div class="space-x-3 px-4 sm:px-6 md:px-0">
         <span class="font-fira font-medium text-xs md:text-sm text-black">Home</span>
         <span class="font-fira font-medium text-xs md:text-sm text-black">/</span>
         <span class="font-fira font-medium text-xs md:text-sm text-black">Shop All</span>
       </div>
 
-      <div v-if=isMobile class="relative md:py-14">
+      <div v-if=isMobile class="relative md:py-14 pl-4 sm:pl-6">
         <!-- Slider Container -->
         <div
           ref="filterSlider"
@@ -66,7 +66,7 @@
       </div>
       
       <!-- Products Grid -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-10 px-4 sm:px-6 md:px-0">
         <ProductCard 
           v-for="product in productsStore.filteredProducts" 
           :key="product.id" 
