@@ -1,40 +1,32 @@
 <template>
-  <header class="fixed top-0 left-0 z-40 transition-transform duration-300" 
-    :class="[
-      isBackgroundChange ? 'bg-white' : 'bg-opacity-0',
-      isNavbarHidden ? '-translate-y-full' : 'translate-y-0'
-    ]"
-  >
-    <div class="z-40 bg-black flex items-center justify-center h-8">
+  <header class="fixed top-0 left-0 z-40 transition-transform duration-300 bg-white">
+    <!-- <div class="z-40 bg-black flex items-center justify-center h-8">
       <span class="text-white text-xs">FREE SHIPPING. FREE RETURNS.</span>
-    </div>
-    <div class="w-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
+    </div> -->
+    <div class="w-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center justify-between">
           <!-- Logo -->
-          <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold" :class="isBackgroundChange ? 'text-gray-600' : 'text-white'">
-            <img v-if="!isBackgroundChange" src="/public/images/logo/onemission-white-logo.png" class="w-full h-10 md:h-12" alt="">
-            <img v-else src="/public/images/logo/onemission-black-logo.png" class="w-full h-10 md:h-12" alt="">
+          <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold text-black">
+            <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-10 md:h-12" alt="">
           </NuxtLink>
   
           <!-- Desktop Navigation -->
           <nav class="hidden mx-24 md:flex space-x-8">
             <NuxtLink 
               to="/products" 
-              class="hover:text-gray-600 transition-colors duration-200"
+              class="hover:text-gray-600 text-black transition-colors duration-200"
               :class="[
                 { 'text-black font-medium': $route.path.includes('/products') },
-                isBackgroundChange ? 'text-gray-600' : 'text-white'
               ]"
             >
               SHOP
             </NuxtLink>
             <NuxtLink 
               to="/contact" 
-              class="hover:text-gray-600 transition-colors duration-200"
+              class="hover:text-gray-600 text-black transition-colors duration-200"
               :class="[
                 { 'text-black font-medium': $route.path === '/contact' },
-                isBackgroundChange ? 'text-gray-600' : 'text-white'
               ]"
             >
               CUSTOMER SERVICE
@@ -48,23 +40,20 @@
             <!-- Search Button -->
             <button 
               @click="toggleSearch"
-              class="p-2 hover:text-gray-600 transition-colors duration-200"
-              :class="isBackgroundChange ? 'text-gray-600' : 'text-white'"
+              class="p-2 hover:text-gray-600 text-black transition-colors duration-200"
             >
               <MagnifyingGlassIcon class="h-5 w-5" />
             </button>
   
             <!-- Wishlist -->
-            <button class="p-2 hover:text-gray-600 transition-colors duration-200"
-              :class="isBackgroundChange ? 'text-gray-600' : 'text-white'"
+            <button class="p-2 hover:text-gray-600 text-black transition-colors duration-200"
             >
               <UserIcon class="h-5 w-5" />
             </button>
   
             <button 
               @click="cartStore.toggleCart()" 
-              class="relative p-2  hover:text-gray-600 transition-colors duration-200"
-              :class="isBackgroundChange ? 'text-gray-600' : 'text-white'"
+              class="relative p-2  hover:text-gray-600 text-black transition-colors duration-200"
             >
               <ShoppingBagIcon class="h-5 w-5" />
               <span 
@@ -78,8 +67,7 @@
             <!-- Mobile Menu Button -->
             <button 
               @click="toggleMobileMenu"
-              class="md:hidden p-2  hover:text-black transition-colors duration-200"
-              :class="isBackgroundChange ? 'text-gray-600' : 'text-white'"
+              class="md:hidden p-2 text-black transition-colors duration-200"
             >
               <Bars3Icon v-if="!isMobileMenuOpen" class="h-5 w-5" />
               <XMarkIcon v-else class="h-5 w-5" />
@@ -130,18 +118,11 @@
             Shop
           </NuxtLink>
           <NuxtLink 
-            to="/about" 
-            class="block text-gray-600 hover:text-black transition-colors duration-200"
-            @click="toggleMobileMenu"
-          >
-            About
-          </NuxtLink>
-          <NuxtLink 
             to="/contact" 
             class="block text-gray-600 hover:text-black transition-colors duration-200"
             @click="toggleMobileMenu"
           >
-            Contact
+            Customer Service
           </NuxtLink>
         </div>
       </div>
@@ -158,30 +139,16 @@ import {
   XMarkIcon
 } from '@heroicons/vue/24/outline'
 import { useCartStore } from '~/stores/cart'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 
 const cartStore = useCartStore()
 
 const isSearchOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const searchQuery = ref('')
-const isBackgroundChange = ref(false)
-const isNavbarHidden = ref(false)
-const firstSection = ref(null)
-let lastScrollY = ref(0)
-
-const handleScroll = () => {
-  const currentScrollY = window.scrollY
-  const sectionHeight = firstSection.value?.offsetHeight || 0
-  console.log(sectionHeight)
-  isBackgroundChange.value = window.scrollY > sectionHeight
-  isNavbarHidden.value = currentScrollY > lastScrollY && currentScrollY > 50
-  lastScrollY = currentScrollY
-}
 
 const toggleSearch = () => {
   isSearchOpen.value = !isSearchOpen.value
-  isBackgroundChange.value = isSearchOpen.value
   if (!isSearchOpen.value) {
     searchQuery.value = ''
   }
@@ -190,15 +157,6 @@ const toggleSearch = () => {
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
-
-onMounted(() => {
-  lastScrollY.value = window.scrollY
-  window.addEventListener('scroll', handleScroll)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 
 // Close mobile menu on route change
 watch(() => useRoute().path, () => {

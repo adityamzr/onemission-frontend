@@ -1,42 +1,72 @@
 <template>
   <div class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <!-- Header -->
-      <div class="mb-8">
-        <h1 class="font-fira text-4xl font-bold text-black mb-4">Shop All</h1>
-        <p class="text-gray-600 max-w-2xl">
-          Discover our complete collection of premium fashion pieces, carefully curated for the modern individual.
-        </p>
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img
+          :src="bannerSrc"
+          alt="Fashion Hero"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
       
-      <!-- Filters -->
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 space-y-4 sm:space-y-0">
-        <div class="flex flex-wrap gap-2">
-          <button 
-            v-for="category in productsStore.categories" 
-            :key="category.id"
-            @click="productsStore.setCategory(category.id)"
-            class="px-4 py-2 text-sm font-medium transition-colors duration-200"
-            :class="productsStore.selectedCategory === category.id 
-              ? 'bg-black text-white' 
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'"
+      <div class="relative z-10 text-center md:text-start text-white px-4 md:px-12 mb-5">
+        <h1 class="font-fira text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          Timeless
+          <span class="block">Elegance</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
+          Discover our curated collection of premium fashion that transcends trends
+        </p>
+      </div>
+    </section>
+
+    <div class="mx-auto px-4 sm:px-6 lg:px-11 mt-5 md:mt-10">
+      <!-- Header -->
+      <div class="space-x-3">
+        <span class="font-fira font-medium text-xs md:text-sm text-black">Home</span>
+        <span class="font-fira font-medium text-xs md:text-sm text-black">/</span>
+        <span class="font-fira font-medium text-xs md:text-sm text-black">Shop All</span>
+      </div>
+
+      <div v-if=isMobile class="relative md:py-14">
+        <!-- Slider Container -->
+        <div
+          ref="filterSlider"
+          class="flex overflow-x-auto scroll-smooth space-x-3 mt-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div
+            v-for="filter in productsStore.categories"
+            :key="filter.id"
+            @click="productsStore.setCategory(filter.id)"
+            class="py-2 px-6 md:px-6 border border-black rounded-full w-fit"
+            :class="productsStore.selectedCategory === filter.id
+              ? 'bg-black text-white'
+              : 'bg-white text-black hover:bg-black hover:text-white'"
           >
-            {{ category.name }} ({{ category.count }})
-          </button>
+            <span class="text-xs md:text-md font-medium">{{ filter.name }}</span>
+          </div>
         </div>
-        
-        <div class="flex items-center space-x-4">
-          <select class="input-field text-sm">
-            <option>Sort by: Featured</option>
-            <option>Price: Low to High</option>
-            <option>Price: High to Low</option>
-            <option>Newest First</option>
-          </select>
+      </div>
+
+      <div v-else class="flex flex-wrap py-7 space-x-3">
+        <div
+          v-for="filter in productsStore.categories"
+          :key="filter.id"
+          @click="productsStore.setCategory(filter.id)"
+          class="py-2 px-6 border border-black rounded-full w-fit"
+          :class="productsStore.selectedCategory === filter.id
+            ? 'bg-black text-white'
+            : 'bg-white text-black hover:bg-black hover:text-white'"
+        >
+          <span class="font-medium">{{ filter.name }}</span>
         </div>
       </div>
       
       <!-- Products Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-10">
         <ProductCard 
           v-for="product in productsStore.filteredProducts" 
           :key="product.id" 
@@ -63,10 +93,29 @@ import { useProductsStore } from '~/stores/products'
 import ProductCard from '~/components/ProductCard.vue'
 
 const productsStore = useProductsStore()
+const mobileQuery = '(max-width: 768px)'
+const isMobile = ref(false)
+let bannerSrc = ref('')
+
+const updateBanner = () => {
+  isMobile.value = window.matchMedia(mobileQuery).matches
+  bannerSrc.value = isMobile.value
+    ? '/images/banners/palestine-mobile.webp'
+    : '/images/banners/palestine.webp'
+}
+
+onMounted(() => {
+  updateBanner()
+  window.addEventListener('resize', updateBanner)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateBanner)
+})
 
 // Meta tags
 useHead({
-  title: 'Shop All Products - LUXE',
+  title: 'Shop All Products - Onemission',
   meta: [
     { name: 'description', content: 'Browse our complete collection of premium fashion including blazers, dresses, trousers, and more.' }
   ]

@@ -11,7 +11,7 @@
         <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
       
-      <div class="relative z-10 text-center md:text-start text-white px-4 md:px-8 mb-5">
+      <div class="relative z-10 text-center md:text-start text-white px-4 md:px-12 mb-5">
         <h1 class="font-fira text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
           Timeless
           <span class="block">Elegance</span>
@@ -31,8 +31,8 @@
     </section>
 
     <!-- New Arrivals -->
-    <section class="py-14 bg-white md:mt-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section class="py-7 md:py-14 bg-white md:mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
         <div class="text-center mb-16">
           <h2 class="font-fira text-5xl md:text-7xl font-bold text-black mb-4">New Arrivals</h2>
         </div>
@@ -61,6 +61,7 @@
 
         <!-- Left Button -->
         <button
+          v-if=!isMobile
           @click="scrollLeft"
           class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
         >
@@ -71,6 +72,7 @@
 
         <!-- Right Button -->
         <button
+          v-if=!isMobile
           @click="scrollRight"
           class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
         >
@@ -87,7 +89,7 @@
     </section>
 
     <!-- Featured Categories 1 -->
-    <section class="py-14 bg-white">
+    <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="group cursor-pointer card-hover">
@@ -138,14 +140,36 @@
       </div>
     </section>
 
-    <!-- New Arrivals -->
-    <section class="py-14 bg-white">
+    <!-- Shop the silhouette -->
+    <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="font-fira text-5xl md:text-7xl font-bold text-black mb-4">Shop The Silhouette</h2>
         </div>
       </div>
-      <div class="w-full px-4 sm:px-6 lg:px-8">
+
+      <div v-if=isMobile class="relative md:py-14">
+        <!-- Slider Container -->
+        <div
+          ref="sliderOutfit"
+          class="flex overflow-x-auto scroll-smooth space-x-6"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div 
+            v-for="(outfit) in outfits"
+            class="group cursor-pointer card-hover">
+            <div class="flex-shrink-0 w-60 md:w-80 text-center aspect-[2/3] rounded-sm">
+              <img 
+                :src="outfit.url"
+                alt="Dresses"
+                class="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
           <div class="group cursor-pointer card-hover">
             <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
@@ -191,7 +215,7 @@
     </section>
 
     <!-- Featured Categories 2 -->
-    <section class="py-14 bg-white">
+    <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="group cursor-pointer card-hover">
@@ -275,14 +299,16 @@ import ProductCard from '~/components/ProductCard.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const slider = ref(null)
+const sliderOutfit = ref(null)
 const mobileQuery = '(max-width: 768px)'
+const isMobile = ref(false)
 let bannerSrc = ref('')
 
 const updateBanner = () => {
-  const isMobile = window.matchMedia(mobileQuery).matches
-  bannerSrc.value = isMobile
-    ? '/images/banners/palestine-mobile.png'
-    : '/images/banners/palestine.png'
+  isMobile.value = window.matchMedia(mobileQuery).matches
+  bannerSrc.value = isMobile.value
+    ? '/images/banners/palestine-mobile.webp'
+    : '/images/banners/palestine.webp'
 }
 
 const scrollLeft = () => {
@@ -332,12 +358,18 @@ const products = [
   // Add more as needed
 ]
 
+const outfits = [
+  { url: 'images/silhouette/1.jpg' },
+  { url: 'images/silhouette/2.jpg' },
+  { url: 'images/silhouette/3.jpg' },
+  { url: 'images/silhouette/4.jpg' },
+]
+
 const productsStore = useProductsStore()
 const emailSubscription = ref('')
 
 onMounted(() => {
   updateBanner()
-  console.log(bannerSrc.value)
   window.addEventListener('resize', updateBanner)
 })
 

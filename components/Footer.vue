@@ -4,7 +4,9 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Brand -->
         <div class="col-span-1 md:col-span-2">
-          <h3 class="font-fira text-2xl font-bold text-black mb-4">LUXE</h3>
+          <NuxtLink to="/">
+            <img src="/public/images/logo/onemission-black-logo.png" class="h-10 md:h-12 mb-4" alt="">
+          </NuxtLink>
           <p class="text-gray-600 mb-6 max-w-md">
             Discover timeless elegance with our curated collection of premium fashion. 
             Each piece is carefully selected to embody sophistication and modern style.
@@ -57,7 +59,7 @@
       <div class="mt-8 pt-8 border-t border-gray-200">
         <div class="flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-600 text-sm">
-            © 2025 LUXE. All rights reserved.
+            © 2025 onemission. All rights reserved.
           </p>
           <div class="flex space-x-6 mt-4 md:mt-0">
             <a href="#" class="text-gray-600 hover:text-black text-sm transition-colors duration-200">Privacy Policy</a>
