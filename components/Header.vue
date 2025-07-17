@@ -5,14 +5,14 @@
     </div>
     <div class="w-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11">
       <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold text-black">
+          <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-5 md:h-8" alt="">
+        </NuxtLink>
+
         <div class="flex items-center justify-between">
-          <!-- Logo -->
-          <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold text-black">
-            <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-5 md:h-12" alt="">
-          </NuxtLink>
-  
           <!-- Desktop Navigation -->
-          <nav class="hidden mx-24 md:flex space-x-8">
+          <nav class="hidden mx-16 md:flex space-x-8">
             <NuxtLink 
               to="/products" 
               class="hover:text-gray-600 text-black transition-colors duration-200"
@@ -32,9 +32,7 @@
               CUSTOMER SERVICE
             </NuxtLink>
           </nav>
-        </div>
 
-        <div>
           <!-- Right Actions -->
           <div class="flex items-center">
             <!-- Search Button -->

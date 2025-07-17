@@ -3,9 +3,9 @@
     <!-- Shop the silhouette -->
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
-        <div class="text-center mb-10">
-          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black text-start">Shop The Outfit</h2>
-          <h4 class="font-fira text-[10px] md:text-xs font-medium text-black text-start">FOR SPORT GYM AND RUN</h4>
+        <div class="text-center mb-10 md:mb-20">
+          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
+          <h5 class="font-fira text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
       </div>
 
@@ -19,7 +19,7 @@
           <div 
             v-for="(outfit) in outfits"
             class="group cursor-pointer card-hover">
-            <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto md:aspect-[2/3] rounded-sm">
+            <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto rounded-sm">
               <img 
                 :src="outfit.url"
                 alt="Dresses"
@@ -32,41 +32,11 @@
 
       <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
+          <div v-for="outfit in outfits" class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 rounded-sm md:h-[420px]">
               <img 
-                src="/public/images/silhouette/1.jpg" 
+                :src="outfit.url" 
                 alt="Blazers"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/2.jpg" 
-                alt="Dresses"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/3.jpg" 
-                alt="Outerwear"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/4.jpg" 
-                alt="Outerwear"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
@@ -106,8 +76,67 @@
       </div>
     </section> -->
 
-    <!-- Featured Categories 1 -->
+    <!-- New Arrivals -->
     <section class="py-7 md:py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
+        <div class="text-center mb-0 md:mb-16">
+          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
+          <h5 class="font-fira text-[10px] md:text-xs font-medium text-black">CHECK OUR LATEST PRODUCTS</h5>
+        </div>
+      </div>
+      <div class="relative py-10 md:py-14">
+        <!-- Slider Container -->
+        <div
+          ref="slider"
+          class="flex overflow-x-auto scroll-smooth space-x-6 pb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div
+            v-for="(product, index) in products"
+            :key="index"
+            class="flex-shrink-0 w-60 md:w-80 text-center"
+          >
+            <img
+              :src="product.image"
+              :alt="product.title"
+              class="mb-10"
+            />
+            <h3 class="text-sm md:text-lg font-bold">{{ product.title }}</h3>
+            <p class="text-xs md:text-md">{{ product.price }} EUR</p>
+          </div>
+        </div>
+
+        <!-- Left Button -->
+        <button
+          v-if=!isMobile
+          @click="scrollLeft"
+          class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Right Button -->
+        <button
+          v-if=!isMobile
+          @click="scrollRight"
+          class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      <div class="text-center">
+        <NuxtLink to="/products/shop-all" class="btn-primary">
+          Shop All
+        </NuxtLink>
+      </div>
+    </section>
+
+    <!-- Featured Categories 1 -->
+    <section class="py-10 md:py-20 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="group cursor-pointer card-hover">
@@ -158,66 +187,8 @@
       </div>
     </section>
 
-    <!-- New Arrivals -->
-    <section class="py-7 md:py-14 bg-white md:mt-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
-        <div class="text-center mb-16">
-          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black mb-4">New Arrivals</h2>
-        </div>
-      </div>
-      <div class="relative py-10 md:py-14">
-        <!-- Slider Container -->
-        <div
-          ref="slider"
-          class="flex overflow-x-auto scroll-smooth space-x-6 pb-4"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
-        >
-          <div
-            v-for="(product, index) in products"
-            :key="index"
-            class="flex-shrink-0 w-60 md:w-80 text-center"
-          >
-            <img
-              :src="product.image"
-              :alt="product.title"
-              class="mb-10"
-            />
-            <h3 class="text-sm md:text-lg font-bold">{{ product.title }}</h3>
-            <p class="text-xs md:text-md">{{ product.price }} EUR</p>
-          </div>
-        </div>
-
-        <!-- Left Button -->
-        <button
-          v-if=!isMobile
-          @click="scrollLeft"
-          class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        <!-- Right Button -->
-        <button
-          v-if=!isMobile
-          @click="scrollRight"
-          class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-      <div class="text-center">
-        <NuxtLink to="/products/shop-all" class="btn-primary">
-          View All
-        </NuxtLink>
-      </div>
-    </section>
-
     <!-- Featured Categories 2 -->
-    <section class="py-7 md:py-14 bg-white">
+    <!-- <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="group cursor-pointer card-hover">
@@ -266,7 +237,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Newsletter -->
     <section class="py-20 bg-black text-white">
