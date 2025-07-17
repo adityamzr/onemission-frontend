@@ -1,5 +1,80 @@
 <template>
   <div>
+    <!-- Shop the silhouette -->
+    <section class="py-7 md:py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
+        <div class="text-center mb-10">
+          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black text-start">Shop The Outfit</h2>
+          <h4 class="font-fira text-[10px] md:text-xs font-medium text-black text-start">FOR SPORT GYM AND RUN</h4>
+        </div>
+      </div>
+
+      <div v-if=isMobile class="relative md:py-14">
+        <!-- Slider Container -->
+        <div
+          ref="sliderOutfit"
+          class="flex overflow-x-auto scroll-smooth space-x-6"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div 
+            v-for="(outfit) in outfits"
+            class="group cursor-pointer card-hover">
+            <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto md:aspect-[2/3] rounded-sm">
+              <img 
+                :src="outfit.url"
+                alt="Dresses"
+                class="min-h-96 object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="w-full px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
+          <div class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
+              <img 
+                src="/public/images/silhouette/1.jpg" 
+                alt="Blazers"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+          
+          <div class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
+              <img 
+                src="/public/images/silhouette/2.jpg" 
+                alt="Dresses"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+          
+          <div class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
+              <img 
+                src="/public/images/silhouette/3.jpg" 
+                alt="Outerwear"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+          
+          <div class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
+              <img 
+                src="/public/images/silhouette/4.jpg" 
+                alt="Outerwear"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
       <div class="absolute inset-0 z-0">
@@ -20,7 +95,7 @@
           Discover our curated collection of premium fashion that transcends trends
         </p>
         <div class="flex flex-col md:flex-row flex-wrap justify-between md:justify-start gap-4 animate-slide-up">
-          <NuxtLink to="/products" class="btn-primary bg-white text-black hover:bg-gray-100">
+          <NuxtLink to="/products/shop-all" class="btn-primary bg-white text-black hover:bg-gray-100">
             Shop Collection
           </NuxtLink>
           <button class="btn-secondary border-white text-white hover:bg-white hover:text-black">
@@ -82,7 +157,7 @@
         </button>
       </div>
       <div class="text-center">
-        <NuxtLink to="/products" class="btn-primary">
+        <NuxtLink to="/products/shop-all" class="btn-primary">
           View All
         </NuxtLink>
       </div>
@@ -140,79 +215,6 @@
       </div>
     </section>
 
-    <!-- Shop the silhouette -->
-    <section class="py-7 md:py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-          <h2 class="font-fira text-5xl md:text-7xl font-bold text-black mb-4">Shop The Silhouette</h2>
-        </div>
-      </div>
-
-      <div v-if=isMobile class="relative md:py-14">
-        <!-- Slider Container -->
-        <div
-          ref="sliderOutfit"
-          class="flex overflow-x-auto scroll-smooth space-x-6"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
-        >
-          <div 
-            v-for="(outfit) in outfits"
-            class="group cursor-pointer card-hover">
-            <div class="flex-shrink-0 w-60 md:w-80 text-center aspect-[2/3] rounded-sm">
-              <img 
-                :src="outfit.url"
-                alt="Dresses"
-                class="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div v-else class="w-full px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/1.jpg" 
-                alt="Blazers"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/2.jpg" 
-                alt="Dresses"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/3.jpg" 
-                alt="Outerwear"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[2/3] rounded-sm">
-              <img 
-                src="/public/images/silhouette/4.jpg" 
-                alt="Outerwear"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Featured Categories 2 -->
     <section class="py-7 md:py-14 bg-white">

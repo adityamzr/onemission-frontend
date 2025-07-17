@@ -25,9 +25,9 @@
     <div class="mx-auto md:px-11 mt-5 md:mt-10">
       <!-- Header -->
       <div class="space-x-3 px-4 sm:px-6 md:px-0">
-        <span class="font-fira font-medium text-xs md:text-sm text-black">Home</span>
-        <span class="font-fira font-medium text-xs md:text-sm text-black">/</span>
-        <span class="font-fira font-medium text-xs md:text-sm text-black">Shop All</span>
+        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
+        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">/</span>
+        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Shop All</span>
       </div>
 
       <div v-if=isMobile class="relative md:py-14 pl-4 sm:pl-6">
@@ -70,7 +70,8 @@
         <ProductCard 
           v-for="product in productsStore.filteredProducts" 
           :key="product.id" 
-          :product="product" 
+          :product="product"
+          categoryPath="shop-all"
         />
       </div>
       

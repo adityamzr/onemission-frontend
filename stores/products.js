@@ -6,12 +6,13 @@ export const useProductsStore = defineStore("products", {
       {
         id: 1,
         name: "Minimalist Blazer",
+        slug: "minimalist-blazer",
         price: 120000,
         originalPrice: 300000,
         discount: 21,
         images: [
           "/images/products/shirt1.avif",
-          "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=800",
+          "/images/products/shirt1-1.avif",
         ],
         category: "blazers",
         description:
@@ -24,6 +25,7 @@ export const useProductsStore = defineStore("products", {
       {
         id: 2,
         name: "Silk Midi Dress",
+        slug: "silk-midi-dress",
         price: 90000,
         images: [
           "/images/products/shirt2.avif",
@@ -40,6 +42,7 @@ export const useProductsStore = defineStore("products", {
       {
         id: 3,
         name: "High-Waist Trousers",
+        slug: "high-waist-trousers",
         price: 78000,
         images: [
           "/images/products/shirt3.avif",
@@ -56,6 +59,7 @@ export const useProductsStore = defineStore("products", {
       {
         id: 4,
         name: "Cashmere Sweater",
+        slug: "cashmere-sweater",
         price: 168000,
         images: [
           "/images/products/short.avif",
@@ -72,6 +76,7 @@ export const useProductsStore = defineStore("products", {
       {
         id: 5,
         name: "Statement Coat",
+        slug: "statement-coat",
         price: 225000,
         originalPrice: 285000,
         discount: 21,
@@ -90,6 +95,7 @@ export const useProductsStore = defineStore("products", {
       {
         id: 6,
         name: "Pleated Skirt",
+        slug: "plated-skirt",
         price: 65000,
         images: [
           "/images/products/hoodie.avif",

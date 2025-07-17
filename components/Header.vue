@@ -1,14 +1,14 @@
 <template>
   <header class="fixed top-0 left-0 z-40 transition-transform duration-300 bg-white">
-    <!-- <div class="z-40 bg-black flex items-center justify-center h-8">
-      <span class="text-white text-xs">FREE SHIPPING. FREE RETURNS.</span>
-    </div> -->
+    <div class="z-40 bg-black flex items-center justify-center h-8">
+      <span class="text-white text-[9px] md:text-xs font-medium">ALL PRICES INCLUDE TAXES AND CUSTOMS DUTIES.</span>
+    </div>
     <div class="w-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11">
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center justify-between">
           <!-- Logo -->
           <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold text-black">
-            <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-10 md:h-12" alt="">
+            <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-5 md:h-12" alt="">
           </NuxtLink>
   
           <!-- Desktop Navigation -->
@@ -46,10 +46,10 @@
             </button>
   
             <!-- Wishlist -->
-            <button class="p-2 hover:text-gray-600 text-black transition-colors duration-200"
+            <!-- <button class="p-2 hover:text-gray-600 text-black transition-colors duration-200"
             >
               <UserIcon class="h-5 w-5" />
-            </button>
+            </button> -->
   
             <button 
               @click="cartStore.toggleCart()" 
