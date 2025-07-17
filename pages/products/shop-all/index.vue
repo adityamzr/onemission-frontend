@@ -22,7 +22,7 @@
     </div>
   </section> -->
 
-    <div class="mx-auto md:px-11 mt-24 md:mt-20">
+    <div class="mx-auto md:px-11 mt-24 md:mt-28">
       <!-- Header -->
       <div class="space-x-3 px-4 sm:px-6 md:px-0">
         <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Home</span>

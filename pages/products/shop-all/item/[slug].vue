@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full min-h-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11 mt-20">
+  <div class="w-full min-h-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11 mt-24 md:mt-28">
     <div class="space-x-3 px-4 sm:px-6 md:px-0 my-5">
       <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
       <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">/</span>
