@@ -30,7 +30,10 @@
         </div>
 
         <!-- Harga -->
-        <div class="text-xl font-bold mt-2 mb-4">{{ product.price }} EUR</div>
+        <div class="flex flex-col mt-2 mb-4">
+          <span class="text-xl font-bold">{{ product.price }} EUR</span>
+          <span class="text-black text-[10px] text-xs md:text-sm">Taxes and duties included</span>
+        </div>
 
         <!-- Badge Info -->
         <div class="flex flex-wrap gap-2 mb-4">
@@ -45,7 +48,7 @@
 
         <!-- Seasonal Colors -->
         <div class="mt-6">
-          <p class="text-sm font-semibold mb-2">Seasonal</p>
+          <p class="text-sm font-semibold mb-2">Color</p>
           <div class="flex gap-3">
             <div
               v-for="(color, i) in product.seasonalColors"
@@ -55,6 +58,27 @@
             ></div>
           </div>
         </div>
+
+        <!-- Sizes -->
+         <div class="flex flex-col justify-center mt-6">
+           <div class="flex justify-between mb-2 w-full">
+            <span class="text-sm font-semibold">Size</span>
+            <span class="text-xs font-fira underline">Size Guide</span>
+           </div>
+
+           <div class="flex flex-wrap flex-row gap-2">
+            <div class="relative h-16 w-16 flex justify-center items-center bg-white border border-gray-400 rounded-md">
+              <div class="absolute w-[140%] h-px bg-gray-400 -rotate-45 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+              <div class="text-gray-400 z-10 w-fit h-fit bg-white">XS</div>
+            </div>
+            <div class="h-16 w-16 flex justify-center items-center bg-white border border-black rounded-md">
+              <span>S</span>
+            </div>
+           </div>
+
+           <button class="w-full h-fit py-4 rounded-md bg-black text-white text-sm font-medium mt-4 mb-8">Add to bag</button>
+         </div>
+
       </div>
     </div>
   </div>
