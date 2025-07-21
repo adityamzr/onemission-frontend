@@ -33,7 +33,7 @@
       <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
           <div v-for="outfit in outfits" class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 rounded-sm md:h-[420px]">
+            <div class="relative overflow-hidden bg-gray-100 rounded-sm aspect-auto">
               <img 
                 :src="outfit.url" 
                 alt="Blazers"
