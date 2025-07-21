@@ -92,19 +92,41 @@
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
           <div
-            v-for="(product, index) in products"
+            v-for="(product, index) in productsStore.latestProducts"
             :key="index"
-            class="flex-shrink-0 w-60 md:w-80 text-center"
+            class="flex-shrink-0 w-60 md:w-80 text-center relative"
           >
-            <img
-              :src="product.image"
-              :alt="product.title"
-              class="mb-10"
-            />
-            <h3 class="text-sm md:text-lg font-bold">{{ product.title }}</h3>
-            <p class="text-xs md:text-md">{{ product.price }} EUR</p>
+            <NuxtLink :to="`/products/shop-all/item/${product.slug}`">
+              <img
+                :src="product.images[0]"
+                :alt="product.name"
+                class="mb-10"
+              />
+              <!-- Discount Badge -->
+              <div 
+                v-if="product.discount" 
+                class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
+              >
+                -{{ product.discount }}%
+              </div>
+
+              <!-- <h3 class="text-sm md:text-lg font-bold">{{ product.title }}</h3>
+              <p class="text-xs md:text-md">{{ product.price }} EUR</p> -->
+              <div class="text-center w-full">
+                <h3 class="text-sm md:text-md font-bold text-black mb-1">{{ product.name }}</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
+                  <span class="text-sm font-medium text-black">{{ formatPrice(product.price) }}</span>
+                  <span 
+                    v-if="product.originalPrice" 
+                    class="text-xs text-gray-500 line-through"
+                  >
+                    {{ formatPrice(product.originalPrice) }}
+                  </span>
+                </div>
+              </div>
+            </NuxtLink>
+            </div>
           </div>
-        </div>
 
         <!-- Left Button -->
         <button
@@ -340,6 +362,14 @@ const outfits = [
 
 const productsStore = useProductsStore()
 const emailSubscription = ref('')
+
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    minimumFractionDigits: 0
+  }).format(price)
+}
 
 onMounted(() => {
   updateBanner()

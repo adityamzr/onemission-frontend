@@ -133,6 +133,10 @@ export const useProductsStore = defineStore("products", {
       );
     },
 
+    latestProducts: (state) => {
+      return [...state.products].sort((a, b) => b.id - a.id).slice(0, 5);
+    },
+
     featuredProducts: (state) =>
       state.products.filter((product) => product.featured),
 
