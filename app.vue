@@ -4,6 +4,7 @@
       <NuxtPage />
     </NuxtLayout>
     <CartSidebar />
+    <OutfitDrawer />
   </div>
 </template>
 

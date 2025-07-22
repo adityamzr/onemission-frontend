@@ -18,7 +18,7 @@
         <div class="flex flex-col h-full">
           <!-- Header -->
           <div class="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 class="text-lg font-medium text-black">Shopping Cart ({{ cartStore.itemCount }})</h2>
+            <h2 class="text-lg font-bold text-black">Shopping Cart ({{ cartStore.itemCount }})</h2>
             <button 
               @click="cartStore.closeCart()"
               class="p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200"

@@ -17,7 +17,8 @@
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
           <div 
-            v-for="(outfit) in outfits"
+            v-for="(outfit) in outfits.data"
+            @click="outfits.setSelectedOutfitId(outfit.id)"
             class="group cursor-pointer card-hover">
             <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto rounded-sm">
               <img 
@@ -32,7 +33,7 @@
 
       <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-          <div v-for="outfit in outfits" class="group cursor-pointer card-hover">
+          <div v-for="outfit in outfits.data" @click="outfits.setSelectedOutfitId(outfit.id)" class="group cursor-pointer card-hover">
             <div class="relative overflow-hidden bg-gray-100 rounded-sm aspect-auto">
               <img 
                 :src="outfit.url" 
@@ -353,13 +354,7 @@ const products = [
   // Add more as needed
 ]
 
-const outfits = [
-  { url: 'images/silhouette/1.jpg' },
-  { url: 'images/silhouette/2.jpg' },
-  { url: 'images/silhouette/3.jpg' },
-  { url: 'images/silhouette/4.jpg' },
-]
-
+const outfits = useOutfits()
 const productsStore = useProductsStore()
 const emailSubscription = ref('')
 
