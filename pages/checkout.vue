@@ -133,7 +133,7 @@
               />
               <div class="flex-1">
                 <h3 class="font-medium text-black">{{ item.name }}</h3>
-                <p class="text-sm text-gray-500">Size: {{ item.selectedSize }}</p>
+                <p class="text-sm text-gray-500">Size: {{ item.selectedSize.size }}</p>
                 <p class="text-sm text-gray-500">Qty: {{ item.quantity }}</p>
               </div>
               <div class="text-right">
