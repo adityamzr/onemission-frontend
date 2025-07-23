@@ -1,5 +1,5 @@
 <template>
-  <div class="relative inline-block text-left">
+  <div ref="dropdownRef" class="relative inline-block text-left">
     <button
       v-if="inStock"
       @click="open = !open"
@@ -16,7 +16,7 @@
     <button
       v-else
       @click="open = !open"
-      class="inline-flex justify-between w-full rounded-md border border-gray-700 py-2 px-4 shadow-sm bg-white text-sm font-medium text-gray-700 "
+      class="inline-flex justify-between w-full rounded-md border border-gray-400 py-2 px-4 shadow-sm bg-white text-sm font-medium text-gray-400 "
       disabled
     >
       Out of Stock
@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   options: {
@@ -55,6 +55,7 @@ const props = defineProps({
 
 const open = ref(false)
 const selectedSize = ref(null)
+const dropdownRef =  ref(null)
 
 const availableOptions = computed(() => {
   return props.options.filter(option => option.stock > 0)
@@ -74,4 +75,18 @@ function selectSize(option) {
   selectedSize.value = option
   open.value = false
 }
+
+function handleClickOutside(event) {
+  if (dropdownRef.value && !dropdownRef.value.contains(event.target)) {
+    open.value = false
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
 </script>

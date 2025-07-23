@@ -27,9 +27,9 @@
             </button>
           </div>
           <!-- Body -->
-          <div class="my-10 w-full px-3 flex flex-col space-y-12 font-fira">
+          <div class="mt-10 mb-20 w-full px-3 flex flex-col space-y-12 font-fira">
             <div v-for="outfitItem in selectedOutfit.outfitItems" class="flex flex-row space-x-2">
-              <NuxtLink :to="`/products/shop-all/item/${outfitItem.slug}`" class="shrink-0 w-40 h-32">
+              <NuxtLink :to="`/products/shop-all/item/${outfitItem.slug}`" class="shrink-0 w-40 h-32 cursor-pointer" @click="outfits.closeOutfitDrawer">
                 <img :src="outfitItem.images[0]" :alt="outfitItem.slug">
               </NuxtLink>
               <div class="flex flex-col space-y-2 w-full">
