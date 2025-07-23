@@ -39,7 +39,6 @@ export const useOutfits = defineStore("outfits", {
           productsStore.products.find((p) => p.id === id)
         ),
       };
-      console.log(data);
       return data;
     },
   },

@@ -49,11 +49,11 @@
                 <img 
                   :src="item.images[0]" 
                   :alt="item.name"
-                  class="w-16 h-20 object-cover"
+                  class="shrink-0 w-40 h-32 object-cover"
                 />
                 <div class="flex-1 min-w-0">
                   <h3 class="text-sm font-medium text-black truncate">{{ item.name }}</h3>
-                  <p class="text-sm text-gray-500">Size: {{ item.selectedSize }}</p>
+                  <p class="text-sm text-gray-500">Size: {{ item.selectedSize.size }}</p>
                   <p class="text-sm font-medium text-black mt-1">
                     {{ formatPrice(item.price) }}
                   </p>
@@ -99,7 +99,7 @@
                 @click="cartStore.closeCart()"
                 class="block w-full btn-primary text-center"
               >
-                Checkout
+                Pre Order Now
               </NuxtLink>
               <button 
                 @click="cartStore.closeCart()"

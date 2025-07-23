@@ -39,9 +39,11 @@
                   <span class="text-xs font-medium">Rp 120.000</span>
                 </div>
                 <div class="flex justify-between space-x-2">
-                  <!-- <input class=" w-[70%] rounded-md">S</input> -->
-                  <Dropdown class="w-[70%]" :options="outfitItem.sizes" :inStock="outfitItem.inStock"/>
-                  <button class="bg-black p-2 cursor-pointer grow rounded-md text-white disabled:bg-gray-400" :disabled="outfitItem.inStock !== true">Add</button>
+                  <Dropdown class="w-[70%]" :options="outfitItem.sizes" :inStock="outfitItem.inStock" @size="handleSize"/>
+                  <button 
+                    @click="addToCart(outfitItem)"
+                    class="bg-black p-2 cursor-pointer grow rounded-md text-white disabled:bg-gray-400" 
+                    :disabled="outfitItem.inStock !== true">Add</button>
                 </div>
               </div>
             </div>
@@ -64,7 +66,9 @@ import { useOutfits } from '~/stores/outfits'
 import { computed } from 'vue'
 
 const outfits = useOutfits()
+const cartStore = useCartStore()
 const selectedOutfit = computed (() => outfits.selectedOutfitWithItems)
+const selectedSize = ref(null)
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat('id-ID', {
@@ -73,4 +77,21 @@ const formatPrice = (price) => {
     minimumFractionDigits: 0
   }).format(price)
 }
+
+const addToCart = (product) => {
+  if (!selectedSize.value) return
+  
+  cartStore.addToCart({
+    ...product,
+    selectedSize: selectedSize.value,
+  })
+  
+  outfits.closeOutfitDrawer()
+  cartStore.toggleCart()
+}
+
+function handleSize(data) {
+  selectedSize.value = data
+}
+
 </script>

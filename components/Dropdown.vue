@@ -53,6 +53,8 @@ const props = defineProps({
   }
 })
 
+const emit = defineEmits(['size'])
+
 const open = ref(false)
 const selectedSize = ref(null)
 const dropdownRef =  ref(null)
@@ -64,6 +66,7 @@ const availableOptions = computed(() => {
 watch(availableOptions, (newOptions) => {
   if (newOptions.length > 0 && !selectedSize.value) {
       selectedSize.value = newOptions[0]
+      emit('size', selectedSize.value)
   }
 }, { immediate: true })
 
@@ -73,6 +76,7 @@ const selectedSizeLabel = computed(() => {
 
 function selectSize(option) {
   selectedSize.value = option
+  emit('size', option)
   open.value = false
 }
 
