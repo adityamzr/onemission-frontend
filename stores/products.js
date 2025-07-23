@@ -17,7 +17,13 @@ export const useProductsStore = defineStore("products", {
         category: "blazers",
         description:
           "A timeless blazer with clean lines and modern tailoring. Perfect for both professional and casual settings.",
-        sizes: ["XS", "S", "M", "L", "XL"],
+        sizes: [
+          { id: 1, size: "XS", stock: 0 },
+          { id: 2, size: "S", stock: 5 },
+          { id: 3, size: "M", stock: 10 },
+          { id: 4, size: "L", stock: 15 },
+          { id: 5, size: "XL", stock: 0 },
+        ],
         colors: ["Black", "Navy", "Camel"],
         featured: true,
         inStock: true,
@@ -34,7 +40,13 @@ export const useProductsStore = defineStore("products", {
         category: "dresses",
         description:
           "Elegant silk midi dress with delicate draping and sophisticated silhouette.",
-        sizes: ["XS", "S", "M", "L"],
+        sizes: [
+          { id: 1, size: "XS", stock: 1 },
+          { id: 2, size: "S", stock: 5 },
+          { id: 3, size: "M", stock: 0 },
+          { id: 4, size: "L", stock: 15 },
+          { id: 5, size: "XL", stock: 0 },
+        ],
         colors: ["Black", "Emerald", "Champagne"],
         featured: true,
         inStock: true,
@@ -51,10 +63,16 @@ export const useProductsStore = defineStore("products", {
         category: "trousers",
         description:
           "Classic high-waist trousers with tailored fit and elegant drape.",
-        sizes: ["XS", "S", "M", "L", "XL"],
+        sizes: [
+          { id: 1, size: "XS", stock: 0 },
+          { id: 2, size: "S", stock: 0 },
+          { id: 3, size: "M", stock: 0 },
+          { id: 4, size: "L", stock: 0 },
+          { id: 5, size: "XL", stock: 0 },
+        ],
         colors: ["Black", "Navy", "Beige"],
         featured: false,
-        inStock: true,
+        inStock: false,
       },
       {
         id: 4,
@@ -68,7 +86,13 @@ export const useProductsStore = defineStore("products", {
         category: "knitwear",
         description:
           "Luxurious cashmere sweater with ribbed details and relaxed fit.",
-        sizes: ["XS", "S", "M", "L"],
+        sizes: [
+          { id: 1, size: "XS", stock: 0 },
+          { id: 2, size: "S", stock: 0 },
+          { id: 3, size: "M", stock: 10 },
+          { id: 4, size: "L", stock: 15 },
+          { id: 5, size: "XL", stock: 10 },
+        ],
         colors: ["Cream", "Camel", "Grey"],
         featured: true,
         inStock: true,
@@ -87,7 +111,11 @@ export const useProductsStore = defineStore("products", {
         category: "outerwear",
         description:
           "Bold statement coat with architectural silhouette and premium construction.",
-        sizes: ["S", "M", "L"],
+        sizes: [
+          { id: 1, size: "XS", stock: 5 },
+          { id: 2, size: "S", stock: 5 },
+          { id: 3, size: "M", stock: 10 },
+        ],
         colors: ["Black", "Camel"],
         featured: true,
         inStock: true,
@@ -104,7 +132,11 @@ export const useProductsStore = defineStore("products", {
         category: "skirts",
         description:
           "Classic pleated skirt with modern proportions and versatile styling options.",
-        sizes: ["XS", "S", "M", "L"],
+        sizes: [
+          { id: 1, size: "M", stock: 10 },
+          { id: 2, size: "L", stock: 0 },
+          { id: 3, size: "XL", stock: 20 },
+        ],
         colors: ["Black", "Navy", "Burgundy"],
         featured: false,
         inStock: true,

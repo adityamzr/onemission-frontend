@@ -39,7 +39,7 @@ export const useOutfits = defineStore("outfits", {
           productsStore.products.find((p) => p.id === id)
         ),
       };
-
+      console.log(data);
       return data;
     },
   },
@@ -47,7 +47,6 @@ export const useOutfits = defineStore("outfits", {
     setSelectedOutfitId(id) {
       this.selectedOutfitId = id;
       this.isOutfitDrawerOpen = true;
-      console.log(id);
     },
 
     closeOutfitDrawer() {

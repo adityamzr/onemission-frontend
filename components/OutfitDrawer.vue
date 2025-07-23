@@ -15,7 +15,7 @@
         v-if="outfits.isOutfitDrawerOpen"
         class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-xl z-50 overflow-y-auto"
       >
-        <div class="flex flex-col h-full">
+        <div class="flex flex-col min-h-full">
           <!-- Header -->
           <div class="flex items-center justify-between p-6 border-b border-gray-200">
             <h2 class="text-lg font-bold text-black">Shop By The Outfit</h2>
@@ -29,7 +29,9 @@
           <!-- Body -->
           <div class="my-10 w-full px-3 flex flex-col space-y-12 font-fira">
             <div v-for="outfitItem in selectedOutfit.outfitItems" class="flex flex-row space-x-2">
-              <img :src="outfitItem.images[0]" alt="" class="shrink-0 w-40 h-32">
+              <NuxtLink :to="`/products/shop-all/item/${outfitItem.slug}`" class="shrink-0 w-40 h-32">
+                <img :src="outfitItem.images[0]" :alt="outfitItem.slug">
+              </NuxtLink>
               <div class="flex flex-col space-y-2 w-full">
                 <h4 class="font-bold text-sm">{{ outfitItem.name }}</h4>
                 <div class="flex justify-between">
@@ -38,8 +40,8 @@
                 </div>
                 <div class="flex justify-between space-x-2">
                   <!-- <input class=" w-[70%] rounded-md">S</input> -->
-                  <Dropdown class="w-[70%]" />
-                  <button class="bg-black p-2 cursor-pointer grow rounded-md text-white">Add</button>
+                  <Dropdown class="w-[70%]" :options="outfitItem.sizes" :inStock="outfitItem.inStock"/>
+                  <button class="bg-black p-2 cursor-pointer grow rounded-md text-white disabled:bg-gray-400" :disabled="outfitItem.inStock !== true">Add</button>
                 </div>
               </div>
             </div>
