@@ -19,7 +19,7 @@
       class="inline-flex justify-between w-full rounded-md border border-gray-400 py-2 px-4 shadow-sm bg-white text-sm font-medium text-gray-400 "
       disabled
     >
-      Out of Stock
+      Sold Out
     </button>
 
     <div
