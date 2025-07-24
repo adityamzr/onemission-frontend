@@ -7,7 +7,7 @@
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
         <NuxtLink to="/" class="font-jaturat-bold text-2xl lg:text-4xl font-bold text-black">
-          <img src="/public/images/logo/onemission-black-logo.png" class="w-full h-5 md:h-8" alt="">
+          <img src="/public/images/logo/onemission-black-logo.png" class="h-5 md:h-8" alt="">
         </NuxtLink>
 
         <div class="flex items-center justify-between">
