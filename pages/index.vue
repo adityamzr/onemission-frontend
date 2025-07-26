@@ -4,7 +4,7 @@
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
         <div class="text-center mb-10 md:mb-20">
-          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
+          <h2 class="font-jaturat-bold text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
           <h5 class="font-fira text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
       </div>
@@ -19,7 +19,7 @@
           <div 
             v-for="(outfit) in outfits.data"
             @click="outfits.setSelectedOutfitId(outfit.id)"
-            class="group cursor-pointer card-hover">
+            class="group cursor-pointer">
             <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto rounded-sm">
               <img 
                 :src="outfit.url"
@@ -33,7 +33,7 @@
 
       <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-          <div v-for="outfit in outfits.data" @click="outfits.setSelectedOutfitId(outfit.id)" class="group cursor-pointer card-hover">
+          <div v-for="outfit in outfits.data" @click="outfits.setSelectedOutfitId(outfit.id)" class="group cursor-pointer">
             <div class="relative overflow-hidden bg-gray-100 rounded-sm aspect-auto">
               <img 
                 :src="outfit.url" 
