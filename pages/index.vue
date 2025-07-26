@@ -4,8 +4,8 @@
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
         <div class="text-center mb-10 md:mb-20">
-          <h2 class="font-jaturat-bold text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
-          <h5 class="font-fira text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
+          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
+          <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
       </div>
 
@@ -59,7 +59,7 @@
       </div>
       
       <div class="relative z-10 text-center md:text-start text-white px-4 md:px-12 mb-5">
-        <h1 class="font-fira text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <h1 class=" text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
           Timeless
           <span class="block">Elegance</span>
         </h1>
@@ -81,8 +81,8 @@
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
         <div class="text-center mb-0 md:mb-16">
-          <h2 class="font-staatliches text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
-          <h5 class="font-fira text-[10px] md:text-xs font-medium text-black">CHECK OUR LATEST PRODUCTS</h5>
+          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
+          <h5 class="text-[10px] md:text-xs font-medium text-black">CHECK OUR LATEST PRODUCTS</h5>
         </div>
       </div>
       <div class="relative py-10 md:py-14">
@@ -171,7 +171,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
                 <p class="text-lg opacity-90">Professional elegance</p>
               </div>
             </div>
@@ -186,7 +186,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
                 <p class="text-lg opacity-90">Effortless sophistication</p>
               </div>
             </div>
@@ -201,7 +201,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
                 <p class="text-lg opacity-90">Statement pieces</p>
               </div>
             </div>
@@ -223,7 +223,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
                 <p class="text-lg opacity-90">Professional elegance</p>
               </div>
             </div>
@@ -238,7 +238,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
                 <p class="text-lg opacity-90">Effortless sophistication</p>
               </div>
             </div>
@@ -253,7 +253,7 @@
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class="font-fira text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
+                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
                 <p class="text-lg opacity-90">Statement pieces</p>
               </div>
             </div>
@@ -265,7 +265,7 @@
     <!-- Newsletter -->
     <section class="py-20 bg-black text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="font-fira text-4xl font-bold mb-4">Stay in Style</h2>
+        <h2 class=" text-4xl font-bold mb-4">Stay in Style</h2>
         <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
           Subscribe to our newsletter and be the first to know about new collections, exclusive offers, and style insights.
         </p>

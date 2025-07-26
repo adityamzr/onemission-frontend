@@ -1,9 +1,9 @@
 <template>
   <div class="w-full min-h-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11 mt-24 md:mt-28">
     <div class="space-x-3 px-4 sm:px-6 md:px-0 my-5">
-      <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
-      <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">/</span>
-      <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Item</span>
+      <span class=" font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
+      <span class=" font-medium text-xs md:text-sm lg:text-base text-black">/</span>
+      <span class=" font-medium text-xs md:text-sm lg:text-base text-black">Item</span>
     </div>
     
     
@@ -20,7 +20,7 @@
         </Swiper>
         <div class="mb-10 hidden md:block">
           <div v-for="detail in product.details">
-            <h1 class="text-2xl text-black font-fira font-bold mt-16">{{ detail.description }}</h1>
+            <h1 class="text-2xl text-black  font-bold mt-16">{{ detail.description }}</h1>
             <img :src="detail.image" class="h-full w-full mt-5" alt="">
           </div>
         </div>
@@ -71,7 +71,7 @@
           <div class="flex flex-col justify-center mt-6">
             <div class="flex justify-between mb-2 w-full">
               <span class="text-sm font-semibold">Size</span>
-              <span class="text-xs font-fira underline">Size Guide</span>
+              <span class="text-xs  underline">Size Guide</span>
             </div>
 
             <div class="flex flex-wrap flex-row gap-2">
@@ -111,7 +111,7 @@
     </div>
     <div class="md:hidden block mb-10">
       <div v-for="detail in product.details" class="mb-10">
-        <h1 class="text-2xl text-black font-fira font-bold mt-16">{{ detail.description }}</h1>
+        <h1 class="text-2xl text-black  font-bold mt-16">{{ detail.description }}</h1>
         <img :src="detail.image" class="h-full w-full mt-5" alt="">
       </div>
 
@@ -169,7 +169,7 @@
   <!-- Newsletter -->
   <section class="py-20 bg-black text-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-fira text-4xl font-bold mb-4">Stay in Style</h2>
+      <h2 class=" text-4xl font-bold mb-4">Stay in Style</h2>
       <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
         Subscribe to our newsletter and be the first to know about new collections, exclusive offers, and style insights.
       </p>

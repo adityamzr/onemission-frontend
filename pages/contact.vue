@@ -2,7 +2,7 @@
   <div class="py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h1 class="font-fira text-4xl font-bold text-black mb-4">Get in Touch</h1>
+        <h1 class=" text-4xl font-bold text-black mb-4">Get in Touch</h1>
         <p class="text-gray-600 max-w-2xl mx-auto">
           We'd love to hear from you. Send us a message and we'll respond as soon as possible.
         </p>

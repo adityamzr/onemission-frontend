@@ -21,7 +21,8 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap', rel: 'stylesheet' },
-        { href: 'https://fonts.googleapis.com/css2?family=Staatliches&display=swap', rel: 'stylesheet' }
+        { href: 'https://fonts.googleapis.com/css2?family=Staatliches&display=swap', rel: 'stylesheet' },
+        { href: 'https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@50..200,200..900&family=Jura:wght@300..700&display=swap', rel: 'stylesheet' },
       ]
     }
   }
