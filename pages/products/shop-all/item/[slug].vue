@@ -114,7 +114,7 @@
     </div>
     <div class="md:hidden block mb-10">
       <div v-for="detail in productDetails.variant.details" class="mb-10">
-        <h1 class="font-inconsolata-extra-bold text-3xl text-black mt-16 px-4 sm:px-6 md:px-11">{{ detail.info }}</h1>
+        <h1 class="font-roco-black text-3xl text-black mt-16 px-4 sm:px-6 md:px-11">{{ detail.info }}</h1>
         <img :src="detail.image" class="h-full w-full mt-5" alt="">
       </div>
       <div class="px-4 sm:px-6 md:px-11">

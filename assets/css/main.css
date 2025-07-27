@@ -145,21 +145,13 @@
     letter-spacing: 0.05rem;
   }
   
-  /* Swiper navigation button */
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: #cccccc; /* ganti dengan warna yang kamu mau */
-    background: #fff; /* contoh background putih */
-    border-radius: 9999px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    border: 1px solid #eee;
-    width: 40px;
-    height: 40px;
+  .swiper .swiper-pagination-bullet-active {
+    background-color: rgb(214, 214, 214);
   }
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background: #f8f8f8;
-    color: #e11d48; /* contoh hover warna rose */
+
+  .swiper .swiper-button-next,
+  .swiper .swiper-button-prev {
+    color: rgb(214, 214, 214);
   }
 }
 

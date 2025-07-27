@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Shop the silhouette -->
-    <section class="py-7 md:py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
-        <div class="text-center mb-10 md:mb-20">
+    <section class="py-14 md:py-20 mb-5 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 md:mt-24">
+        <div class="text-center mb-12 md:mb-20">
           <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
           <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
@@ -75,7 +75,7 @@
     </section>
 
     <!-- New Arrivals -->
-    <section class="py-7 md:py-20 bg-white">
+    <section class="py-14 md:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
         <div class="text-center mb-0 md:mb-16">
           <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
@@ -240,7 +240,7 @@
           640: { slidesPerView: 2, spaceBetween: 32 },
           1024: { slidesPerView: 3, spaceBetween: 32 }
         }"
-        class="mb-6 overflow-hidden"
+        class="mb-6 overflow-hidden swiper"
       >
         <SwiperSlide v-for="(img, idx) in gallery" :key="idx">
           <img :src="img" alt="gallery foto" class="w-full aspect-[2:3]" />
