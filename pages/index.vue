@@ -1,11 +1,38 @@
 <template>
   <div>
+     <!-- Hero Section -->
+    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden mt-20 md:mt-24">
+      <div class="absolute inset-0 z-0">
+        <img
+          :src="bannerSrc"
+          alt="Fashion Hero"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+      </div>
+      
+      <div class="relative z-10 text-center md:text-start text-white px-10 md:px-12 mb-32 md:mb-4">
+        <h1 class="font-roco-black text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+          Timeless
+          <span class="block">Elegance</span>
+        </h1>
+        <p class="text-xl md:text-2xl mb-4 max-w-2xl mx-auto animate-slide-up">
+          Discover our curated collection of premium fashion that transcends trends
+        </p>
+        <div class="flex flex-col md:flex-row flex-wrap justify-between md:justify-start gap-4 animate-slide-up">
+          <NuxtLink to="/products/shop-all" class="btn-primary text-md md:text-lg rounded-md bg-white text-black font-bold hover:bg-gray-100">
+            SHOP NOW
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
+
     <!-- Shop the silhouette -->
-    <section class="py-14 md:py-20 mb-5 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 md:mt-24">
+    <section class="py-14 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-20">
           <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
-          <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
+          <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORTS GYM OR RUN</h5>
         </div>
       </div>
 
@@ -47,32 +74,7 @@
 
     </section>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
-      <div class="absolute inset-0 z-0">
-        <img
-          :src="bannerSrc"
-          alt="Fashion Hero"
-          class="w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-      </div>
-      
-      <div class="relative z-10 text-center md:text-start text-white px-10 md:px-12 mb-20 md:mb-4">
-        <h1 class="font-roco-black text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Timeless
-          <span class="block">Elegance</span>
-        </h1>
-        <p class="text-xl md:text-2xl mb-4 max-w-2xl mx-auto animate-slide-up">
-          Discover our curated collection of premium fashion that transcends trends
-        </p>
-        <div class="flex flex-col md:flex-row flex-wrap justify-between md:justify-start gap-4 animate-slide-up">
-          <NuxtLink to="/products/shop-all" class="btn-primary text-md md:text-lg rounded-md bg-white text-black font-bold hover:bg-gray-100">
-            SHOP NOW
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
+   
 
     <!-- New Arrivals -->
     <section class="py-14 md:py-20 bg-white">
