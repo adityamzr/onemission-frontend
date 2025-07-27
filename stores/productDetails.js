@@ -666,7 +666,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
           details: [
             {
               title: "Ultra-Light Fabric",
-              info: "Designed for maximum breathability and comfort.",
+              info: "Our signature MothTech™ T-shirt with strategically placed holes for ventilation and cooling. Weighs 175 grams.",
               image:
                 "/images/details/space_o-singlet-deep-mahogany-detail-1.webp",
             },

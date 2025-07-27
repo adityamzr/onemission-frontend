@@ -5,21 +5,25 @@ export const useOutfits = defineStore("outfits", {
         id: 1,
         url: "images/silhouette/1.jpg",
         outfitItems: [1, 2],
+        isShown: true,
       },
       {
         id: 2,
         url: "images/silhouette/2.jpg",
         outfitItems: [3, 4],
+        isShown: true,
       },
       {
         id: 3,
         url: "images/silhouette/3.jpg",
         outfitItems: [5, 6],
+        isShown: true,
       },
       {
         id: 4,
         url: "images/silhouette/4.jpg",
         outfitItems: [1, 2, 3, 4, 5, 6],
+        isShown: true,
       },
     ],
     selectedOutfitId: null,
@@ -39,6 +43,7 @@ export const useOutfits = defineStore("outfits", {
           productsStore.products.find((p) => p.id === id)
         ),
       };
+
       return data;
     },
   },

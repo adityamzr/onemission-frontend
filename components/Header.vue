@@ -15,19 +15,13 @@
           <nav class="hidden mx-16 md:flex space-x-8">
             <NuxtLink 
               to="/products/shop-all" 
-              class="hover:text-gray-600 text-black transition-colors duration-200"
-              :class="[
-                { 'text-black font-medium': $route.path.includes('/products/shop-all') },
-              ]"
+              class="hover:text-gray-600 font-medium text-black transition-colors duration-200"
             >
               SHOP
             </NuxtLink>
             <NuxtLink 
-              to="/contact" 
-              class="hover:text-gray-600 text-black transition-colors duration-200"
-              :class="[
-                { 'text-black font-medium': $route.path === '/contact' },
-              ]"
+            to="" 
+              class="hover:text-gray-600 font-medium text-black transition-colors duration-200"
             >
               CUSTOMER SERVICE
             </NuxtLink>
@@ -103,24 +97,24 @@
         <div class="px-4 py-4 space-y-4">
           <NuxtLink 
             to="/" 
-            class="block text-gray-600 hover:text-black transition-colors duration-200"
+            class="block text-gray-600 font-medium hover:text-black transition-colors duration-200"
             @click="toggleMobileMenu"
           >
-            Home
+            HOME
           </NuxtLink>
           <NuxtLink 
             to="/products" 
-            class="block text-gray-600 hover:text-black transition-colors duration-200"
+            class="block text-gray-600 font-medium hover:text-black transition-colors duration-200"
             @click="toggleMobileMenu"
           >
-            Shop
+            SHOP
           </NuxtLink>
           <NuxtLink 
-            to="/contact" 
-            class="block text-gray-600 hover:text-black transition-colors duration-200"
+            to="" 
+            class="block text-gray-600 font-medium hover:text-black transition-colors duration-200"
             @click="toggleMobileMenu"
           >
-            Customer Service
+            CUSTOMER SERVICE
           </NuxtLink>
         </div>
       </div>

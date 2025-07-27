@@ -13,7 +13,7 @@
         </Swiper>
         <div class="mb-10 hidden md:block px-4 sm:px-6 md:px-11">
           <div v-for="detail in productDetails.variant.details" :key="detail.id">
-            <h1 class="font-inconsolata-extra-bold text-2xl md:text-4xl text-black mt-16">{{ detail.info }}</h1>
+            <h1 class="font-roco-black text-3xl md:text-4xl lg:text-6xl text-black mt-16">{{ detail.info }}</h1>
             <img :src="detail.image" class="h-full w-full mt-5" alt="">
           </div>
         </div>
@@ -23,7 +23,7 @@
         <div class="md:sticky md:top-20">
           <!-- Nama Produk + Rating -->
           <div class="mb-2 border-b pb-2">
-            <h1 class="font-jura-bold text-3xl">{{ productDetails.name }}</h1>
+            <h1 class="font-inconsolata-extra-bold text-3xl md:text-4xl">{{ productDetails.name }}</h1>
             <div class="flex items-center gap-1 text-sm text-black mt-1">
               <span class="text-yellow-500">★★★★★</span>
               <span>{{ productDetails.reviews.length }} Reviews</span>
@@ -32,7 +32,7 @@
 
           <!-- Harga -->
           <div class="flex flex-col mt-2 mb-4">
-            <span class="text-xl font-bold">{{ useProducts.formatPrice(productDetails.price) }}</span>
+            <span class="text-xl md:text-2xl font-bold">{{ useProducts.formatPrice(productDetails.price) }}</span>
             <span class="text-black text-[10px] text-xs md:text-sm">Taxes and duties included</span>
           </div>
 
@@ -41,7 +41,7 @@
             <span
               v-for="badge in productDetails.tags"
               :key="badge"
-              class="px-3 py-1 border border-black rounded-full text-xs font-medium"
+              class="px-3 py-1 border border-black rounded-full text-xs md:text-base font-bold"
             >
               {{ badge.name }}
             </span>
@@ -55,10 +55,11 @@
               </div> -->
               <div :style="{ background: productDetails.variant.colorCode }" class="w-8 h-8 border-4 border-gray-200 rounded-full"></div>
               <NuxtLink :to="`/products/shop-all/item/${item.slug}`"
+                class="flex items-center justify-center cursor-pointer"
                 v-for="(item) in productDetails.otherVariants"
                 :key="item.slug">
                   <div
-                    class="w-8 h-8 rounded-full cursor-pointer hover:bg-gray-200 transition-colors duration-200"
+                    class="w-6 h-6 rounded-full cursor-pointer hover:bg-gray-200 transition-colors duration-200"
                     :style="{ backgroundColor: item.colorCode }"
                   ></div>
               </NuxtLink>
@@ -75,19 +76,19 @@
             <div class="flex flex-wrap flex-row gap-2"
               :class="productDetails.variant.sizes.length < 5 ? 'justify-start' : 'justify-between'">
               <div v-for="size in productDetails.variant.sizes" :key="size.id">
-                <div v-if="size.stock === 0" class="relative h-16 w-16 flex justify-center items-center bg-white border border-gray-400 rounded-md">
+                <div v-if="size.stock === 0" class="relative h-14 w-14 flex justify-center items-center bg-white border border-gray-400 rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
                   <!-- <div class="absolute w-[140%] h-px bg-gray-400 rotate-45 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div> -->
                   <div class="absolute w-[140%] h-px bg-gray-400 -rotate-45 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                   <div class="text-gray-400 z-10 w-fit h-fit p-0.5 bg-white">{{ size.size }}</div>
                 </div>
-                <div v-else class="h-16 w-16 flex justify-center items-center bg-white border border-black rounded-md">
+                <div v-else class="h-14 w-14 flex justify-center items-center bg-white border border-black rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
                   <span>{{ size.size }}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <button class="w-full h-fit py-4 rounded-md bg-black text-white text-sm font-medium mt-4 mb-8 disabled:bg-gray-400" :disabled="productDetails.variant.inStock !== true">Add to bag</button>
+          <button class="w-full h-fit py-3 rounded-md bg-black text-white text-md font-bold mt-4 mb-8 disabled:bg-gray-400" :disabled="productDetails.variant.inStock !== true">Add to bag</button>
 
           <Accordion title="Shipping & Returns">
             <p>Free shipping worldwide on orders above 6000000 IDR.</p>

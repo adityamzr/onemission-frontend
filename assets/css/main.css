@@ -7,6 +7,19 @@
     font-family: 'inconsolata', monospace;
   }
 
+  .font-roco-bold {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .font-roco-black {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+  }
   
   .font-inconsolata-extra-light {
     font-family: "Inconsolata", monospace;
@@ -131,7 +144,23 @@
     font-style: normal;
     letter-spacing: 0.05rem;
   }
-
+  
+  /* Swiper navigation button */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #cccccc; /* ganti dengan warna yang kamu mau */
+    background: #fff; /* contoh background putih */
+    border-radius: 9999px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    width: 40px;
+    height: 40px;
+  }
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: #f8f8f8;
+    color: #e11d48; /* contoh hover warna rose */
+  }
 }
 
 @layer components {

@@ -4,7 +4,7 @@
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
         <div class="text-center mb-10 md:mb-20">
-          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
+          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
           <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
       </div>
@@ -48,7 +48,7 @@
     </section>
 
     <!-- Hero Section -->
-    <!-- <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
+    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
       <div class="absolute inset-0 z-0">
         <img
           :src="bannerSrc"
@@ -58,30 +58,27 @@
         <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
       
-      <div class="relative z-10 text-center md:text-start text-white px-4 md:px-12 mb-5">
-        <h1 class=" text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+      <div class="relative z-10 text-center md:text-start text-white px-10 md:px-12 mb-20 md:mb-4">
+        <h1 class="font-roco-black text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
           Timeless
           <span class="block">Elegance</span>
         </h1>
-        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-slide-up">
+        <p class="text-xl md:text-2xl mb-4 max-w-2xl mx-auto animate-slide-up">
           Discover our curated collection of premium fashion that transcends trends
         </p>
         <div class="flex flex-col md:flex-row flex-wrap justify-between md:justify-start gap-4 animate-slide-up">
-          <NuxtLink to="/products/shop-all" class="btn-primary bg-white text-black hover:bg-gray-100">
-            Shop Collection
+          <NuxtLink to="/products/shop-all" class="btn-primary text-md md:text-lg rounded-md bg-white text-black font-bold hover:bg-gray-100">
+            SHOP NOW
           </NuxtLink>
-          <button class="btn-secondary border-white text-white hover:bg-white hover:text-black">
-            Explore More
-          </button>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!-- New Arrivals -->
-    <section class="py-7 md:py-14 bg-white">
+    <section class="py-7 md:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
         <div class="text-center mb-0 md:mb-16">
-          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
+          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
           <h5 class="text-[10px] md:text-xs font-medium text-black">CHECK OUR LATEST PRODUCTS</h5>
         </div>
       </div>
@@ -171,14 +168,14 @@
         </button>
       </div>
       <div class="text-center">
-        <NuxtLink to="/products/shop-all" class="btn-primary">
+        <NuxtLink to="/products/shop-all" class="btn-primary font-bold rounded-md">
           Shop All
         </NuxtLink>
       </div>
     </section>
 
     <!-- Featured Categories 1 -->
-    <section class="py-10 md:py-20 bg-white">
+    <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="group cursor-pointer card-hover">
@@ -230,56 +227,27 @@
     </section>
 
     <!-- Featured Categories 2 -->
-    <!-- <section class="py-7 md:py-14 bg-white">
+    <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
-              <img 
-                src="/public/images/features/4.jpg" 
-                alt="Blazers"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
-                <p class="text-lg opacity-90">Professional elegance</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
-              <img 
-                src="/public/images/features/5.jpg" 
-                alt="Dresses"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
-                <p class="text-lg opacity-90">Effortless sophistication</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
-              <img 
-                src="/public/images/features/6.jpg" 
-                alt="Outerwear"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
-                <p class="text-lg opacity-90">Statement pieces</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Swiper
+        :modules="[Navigation, Pagination]"
+        navigation
+        :pagination="{ clickable: true }"
+        :slides-per-view="3"
+        :space-between="32"
+        :breakpoints="{
+          320: { slidesPerView: 1, spaceBetween: 32 },
+          640: { slidesPerView: 2, spaceBetween: 32 },
+          1024: { slidesPerView: 3, spaceBetween: 32 }
+        }"
+        class="mb-6 overflow-hidden"
+      >
+        <SwiperSlide v-for="(img, idx) in gallery" :key="idx">
+          <img :src="img" alt="gallery foto" class="w-full aspect-[2:3]" />
+        </SwiperSlide>
+      </Swiper>
       </div>
-    </section> -->
+    </section>
 
     <!-- Newsletter -->
     <section class="py-20 bg-black text-white">
@@ -293,12 +261,12 @@
           <input 
             type="email" 
             placeholder="Enter your email"
-            class="flex-1 px-4 py-3 bg-white text-black focus:outline-none"
+            class="flex-1 px-4 py-3 bg-white text-black focus:outline-none rounded-md"
             v-model="emailSubscription"
           />
           <button 
             type="submit"
-            class="px-6 py-3 bg-white text-black font-medium hover:bg-gray-100 transition-colors duration-200"
+            class="px-6 py-3 bg-white text-black font-bold hover:bg-gray-100 transition-colors duration-200 rounded-md"
           >
             Subscribe
           </button>
@@ -312,6 +280,11 @@
 import { useProductsStore } from '~/stores/products'
 import ProductCard from '~/components/ProductCard.vue'
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 const slider = ref(null)
 const sliderOutfit = ref(null)
@@ -322,8 +295,8 @@ let bannerSrc = ref('')
 const updateBanner = () => {
   isMobile.value = window.matchMedia(mobileQuery).matches
   bannerSrc.value = isMobile.value
-    ? '/images/banners/palestine-mobile.webp'
-    : '/images/banners/palestine.webp'
+    ? '/images/banners/mobile-banner.webp'
+    : '/images/banners/banner.webp'
 }
 
 const scrollLeft = () => {
@@ -338,6 +311,14 @@ const outfits = useOutfits()
 const productsStore = useProductsStore()
 const emailSubscription = ref('')
 const hoveredVariant = ref({})
+const gallery = ref([
+  '/images/gallery/gallery-1.webp',
+  '/images/gallery/gallery-2.webp',
+  '/images/gallery/gallery-3.webp',
+  '/images/gallery/gallery-4.webp',
+  '/images/gallery/gallery-5.webp',
+  '/images/gallery/gallery-6.webp',
+])
 
 const getImage = (product, index) => {
   const slug = hoveredVariant.value[index]
