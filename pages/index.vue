@@ -4,7 +4,7 @@
     <section class="py-7 md:py-14 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-28">
         <div class="text-center mb-10 md:mb-20">
-          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">Shop The Outfit</h2>
+          <h2 class="font-jura-bold text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
           <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORT GYM AND RUN</h5>
         </div>
       </div>
@@ -96,38 +96,57 @@
             v-for="(product, index) in productsStore.latestProducts"
             :key="index"
             class="flex-shrink-0 w-60 md:w-80 text-center relative"
-          >
+            >
             <NuxtLink :to="`/products/shop-all/item/${product.slug}`">
-              <img
-                :src="product.images[0]"
-                :alt="product.name"
-                class="mb-10"
-              />
-              <!-- Discount Badge -->
-              <div 
-                v-if="product.discount" 
-                class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
-              >
-                -{{ product.discount }}%
+            <img
+              :src="getImage(product, index)"
+              :alt="product.name"
+              class="mb-10"
+              @mouseenter="hoveredVariant[index] = product.slug"
+              @mouseleave="hoveredVariant[index] = null"
+            />
+            <!-- Discount Badge -->
+            <div 
+              v-if="product.discount" 
+              class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
+            >
+              -{{ product.discount }}%
+            </div>
+            
+            <div class="text-center w-full">
+              <h3 class="text-md md:text-lg lg:text-xl font-extrabold text-black mb-1">{{ product.name }}</h3>
+              <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
+                <span class="text-md font-medium text-black">{{ formatPrice(product.price) }}</span>
+                <span 
+                  v-if="product.originalPrice" 
+                  class="text-sm text-gray-500 line-through"
+                >
+                  {{ formatPrice(product.originalPrice) }}
+                </span>
               </div>
-
-              <!-- <h3 class="text-sm md:text-lg font-bold">{{ product.title }}</h3>
-              <p class="text-xs md:text-md">{{ product.price }} EUR</p> -->
-              <div class="text-center w-full">
-                <h3 class="text-sm md:text-md font-bold text-black mb-1">{{ product.name }}</h3>
-                <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
-                  <span class="text-sm font-medium text-black">{{ formatPrice(product.price) }}</span>
-                  <span 
-                    v-if="product.originalPrice" 
-                    class="text-xs text-gray-500 line-through"
-                  >
-                    {{ formatPrice(product.originalPrice) }}
-                  </span>
-                </div>
-              </div>
+            </div>
             </NuxtLink>
+            <!-- COLORS -->
+            <div class="flex justify-center space-x-2 mt-2">
+              <div class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-gray-400 cursor-pointer">
+                <span :style="{ background: product.colorCode }" class="w-2.5 h-2.5 md:w-[18px] md:h-[18px] rounded-full"></span>
+              </div>
+              <NuxtLink
+                v-for="item in product.otherVariants" 
+                :key="item.slug"
+                :to="`/products/shop-all/item/${item.slug}`"
+                @mouseenter="hoveredVariant[index] = item.slug"
+                @mouseleave="hoveredVariant[index] = null"
+                class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-transparent hover:border-gray-700 cursor-pointer">
+                <span
+                  class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full cursor-pointer"
+                  :class="{ 'border border-gray-200': item.colorCode === '#fff' || item.colorCode === '#f8f8f8' }"
+                  :style="{ backgroundColor: item.colorCode }"
+                ></span>
+              </NuxtLink>
             </div>
           </div>
+        </div>
 
         <!-- Left Button -->
         <button
@@ -315,48 +334,23 @@ const scrollRight = () => {
   slider.value.scrollBy({ left: 300, behavior: 'smooth' })
 }
 
-const products = [
-  {
-    title: 'MothTech™ T-Shirt',
-    price: 120,
-    image: 'images/new_arrivals/1.jpg',
-  },
-  {
-    title: 'PeaceShell™ River Shirt',
-    price: 290,
-    image: 'images/new_arrivals/2.jpg',
-  },
-  {
-    title: 'Justice™ Dyneema® Trail Band',
-    price: 160,
-    image: 'images/new_arrivals/3.jpg',
-  },
-  {
-    title: 'MothTech™ Muscle Tee',
-    price: 120,
-    image: 'images/new_arrivals/4.jpg',
-  },
-  {
-    title: 'MothTech™ Muscle Tee',
-    price: 120,
-    image: 'images/new_arrivals/5.jpg',
-  },
-  {
-    title: 'MothTech™ Muscle Tee',
-    price: 120,
-    image: 'images/new_arrivals/6.jpg',
-  },
-  {
-    title: 'MothTech™ Muscle Tee',
-    price: 120,
-    image: 'images/new_arrivals/7.jpg',
-  },
-  // Add more as needed
-]
-
 const outfits = useOutfits()
 const productsStore = useProductsStore()
 const emailSubscription = ref('')
+const hoveredVariant = ref({})
+
+const getImage = (product, index) => {
+  const slug = hoveredVariant.value[index]
+  if (slug) {
+    const variant = product.otherVariants?.find(v => v.slug === slug)
+    if (variant && variant.images && variant.images[0]) {
+      return variant.images[0]
+    } else {
+      return product.images?.[1] ? product.images[1] : product.images?.[0]
+    }
+  }
+  return product.images?.[0]
+}
 
 const formatPrice = (price) => {
   return new Intl.NumberFormat('id-ID', {

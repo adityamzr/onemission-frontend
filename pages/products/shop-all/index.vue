@@ -12,7 +12,7 @@
     </div>
     
     <div class="relative z-10 text-center md:text-start text-white px-4 md:px-12 mb-5">
-      <h1 class="font-fira text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+      <h1 class=" text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
         Timeless
         <span class="block">Elegance</span>
       </h1>
@@ -25,9 +25,9 @@
     <div class="mx-auto md:px-11 mt-24 md:mt-28">
       <!-- Header -->
       <div class="space-x-3 px-4 sm:px-6 md:px-0">
-        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
-        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">/</span>
-        <span class="font-fira font-medium text-xs md:text-sm lg:text-base text-black">Shop All</span>
+        <span class=" font-medium text-xs md:text-sm lg:text-base text-black">Home</span>
+        <span class=" font-medium text-xs md:text-sm lg:text-base text-black">/</span>
+        <span class=" font-medium text-xs md:text-sm lg:text-base text-black">Shop All</span>
       </div>
 
       <div v-if=isMobile class="relative md:py-14 pl-4 sm:pl-6">
@@ -56,7 +56,7 @@
           v-for="filter in productsStore.categories"
           :key="filter.id"
           @click="productsStore.setCategory(filter.id)"
-          class="py-2 px-6 border border-black rounded-full w-fit"
+          class="py-2 px-6 border border-black rounded-full w-fit cursor-pointer"
           :class="productsStore.selectedCategory === filter.id
             ? 'bg-black text-white'
             : 'bg-white text-black hover:bg-black hover:text-white'"

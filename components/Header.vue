@@ -14,10 +14,10 @@
           <!-- Desktop Navigation -->
           <nav class="hidden mx-16 md:flex space-x-8">
             <NuxtLink 
-              to="/products" 
+              to="/products/shop-all" 
               class="hover:text-gray-600 text-black transition-colors duration-200"
               :class="[
-                { 'text-black font-medium': $route.path.includes('/products') },
+                { 'text-black font-medium': $route.path.includes('/products/shop-all') },
               ]"
             >
               SHOP
