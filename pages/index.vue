@@ -2,6 +2,7 @@
   <div>
      <!-- Hero Section -->
     <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden mt-20 md:mt-24">
+      <div class="absolute bottom-0 left-0 right-0 w-full bg-gradient-to-b from-transparent to-white pointer-events-none h-60 z-10"></div>
       <div class="absolute inset-0 z-0">
         <img
           :src="bannerSrc"
@@ -9,7 +10,7 @@
           class="w-full h-full object-cover"
           loading="lazy"
         />
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-20"></div>
       </div>
       
       <div class="relative z-10 text-center md:text-start text-white px-10 md:px-12 mb-32 md:mb-4">

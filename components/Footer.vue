@@ -38,8 +38,8 @@
           <h4 class="font-medium text-black mb-4">Quick Links</h4>
           <ul class="space-y-2">
             <li><NuxtLink to="/products/shop-all" class="text-gray-600 hover:text-black transition-colors duration-200">Shop All</NuxtLink></li>
-            <li><NuxtLink to="" class="text-gray-600 hover:text-black transition-colors duration-200">About Us</NuxtLink></li>
-            <li><NuxtLink to="" class="text-gray-600 hover:text-black transition-colors duration-200">Contact</NuxtLink></li>
+            <!-- <li><NuxtLink to="" class="text-gray-600 hover:text-black transition-colors duration-200">About Us</NuxtLink></li>
+            <li><NuxtLink to="" class="text-gray-600 hover:text-black transition-colors duration-200">Contact</NuxtLink></li> -->
             <li><a href="#" class="text-gray-600 hover:text-black transition-colors duration-200">Size Guide</a></li>
           </ul>
         </div>
