@@ -84,8 +84,15 @@ export const useCartStore = defineStore("cart", {
       );
 
       if (item) {
+        // Cari stok dari size yang dipilih
+        const sizeObj = item.sizes?.find((s) => s.size === size.size);
+        const maxStock = sizeObj ? sizeObj.stock : Infinity;
+        console.log(item, size, quantity, maxStock);
+
         if (quantity <= 0) {
           this.removeFromCart(productId, size);
+        } else if (quantity > maxStock) {
+          item.quantity = maxStock;
         } else {
           item.quantity = quantity;
         }
