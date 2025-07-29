@@ -2,7 +2,7 @@
   <div class="py-8 min-h-screen bg-gray-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-8">
-        <h1 class="font-fira text-4xl font-bold text-black mb-2">Checkout</h1>
+        <h1 class="text-4xl font-bold text-black mb-2">Checkout</h1>
         <p class="text-gray-600">Complete your order</p>
       </div>
       
@@ -130,6 +130,7 @@
                 :src="item.images[0]" 
                 :alt="item.name"
                 class="w-16 h-20 object-cover"
+                loading="lazy"
               />
               <div class="flex-1">
                 <h3 class="font-medium text-black">{{ item.name }}</h3>

@@ -5,7 +5,7 @@
         <!-- Brand -->
         <div class="col-span-1 md:col-span-2">
           <NuxtLink to="/">
-            <img src="/public/images/logo/onemission-black-logo.png" class="h-10 md:h-12 mb-4" alt="">
+            <img src="/public/images/logo/onemission-black-logo.png" class="h-5 md:h-8 mb-4" alt="logo onemission" loading="lazy"/>
           </NuxtLink>
           <p class="text-gray-600 mb-6 max-w-md">
             Discover timeless elegance with our curated collection of premium fashion. 

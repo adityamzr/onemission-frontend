@@ -9,6 +9,7 @@
           :src="getImage()" 
           :alt="product.name"
           class="w-full h-full object-cover transition-transform duration-500"
+          loading="lazy"
         />
         
         <!-- Discount Badge -->

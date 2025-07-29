@@ -8,13 +8,45 @@
         class="mb-6 rounded-lg overflow-hidden"
         >
           <SwiperSlide v-for="(img, i) in productDetails.variant.images" :key="i">
-            <img :src="img" alt="Foto Produk" class="w-full" />
+            <img :src="img" alt="Foto Produk" class="w-full" loading="lazy"/>
           </SwiperSlide>
         </Swiper>
         <div class="mb-10 hidden md:block px-4 sm:px-6 md:px-11">
+          <h1 v-if="productDetails.variant.outfits !== null" class="font-roco-black text-3xl md:text-4xl lg:text-6xl text-black mt-16 px-4">{{ productDetails.description }}</h1>
+          <div v-if="productDetails.variant.outfits !== null" class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div v-for="item in productDetails.variant.outfits.url" class="group">
+              <div class="relative overflow-hidden rounded-sm aspect-[1/2]">
+                <video
+                  v-if="item.endsWith('.mp4')"
+                  :src="item"
+                  loop
+                  autoplay
+                  muted
+                  playsinline
+                  class="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+                />
+                <img 
+                  v-else
+                  :src="item" 
+                  alt="Blazers"
+                  class="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+          <div v-if="productDetails.variant.outfits !== null" class="flex flex-col md:flex-row justify-between mt-5">
+            <span class="text-sm font-bold md:text-md">{{ productDetails.variant.outfits.modelName }} is {{ productDetails.variant.outfits.modelHeight }} and wears a size {{ productDetails.variant.outfits.modelSize }}</span>
+            <button 
+              @click="outfits.setSelectedOutfitId(productDetails.variant.outfits.id)"
+              class="px-6 py-3 bg-black text-white font-bold hover:bg-gray-100 transition-colors duration-200 rounded-md"
+              >
+                Shop the Outfit
+            </button>
+          </div>
           <div v-for="detail in productDetails.variant.details" :key="detail.id">
             <h1 class="font-roco-black text-3xl md:text-4xl lg:text-6xl text-black mt-16">{{ detail.info }}</h1>
-            <img :src="detail.image" class="h-full w-full mt-5" alt="">
+            <img :src="detail.image" class="h-full w-full mt-5" alt="" loading="lazy"/>
           </div>
         </div>
       </div>
@@ -76,19 +108,33 @@
             <div class="flex flex-wrap flex-row gap-2"
               :class="productDetails.variant.sizes.length < 5 ? 'justify-start' : 'justify-between'">
               <div v-for="size in productDetails.variant.sizes" :key="size.id">
-                <div v-if="size.stock === 0" class="relative h-14 w-14 flex justify-center items-center bg-white border border-gray-400 rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
+                <div 
+                  v-if="size.stock === 0" 
+                  @click="handleSize(size)"
+                  class="relative h-14 w-14 flex justify-center items-center bg-white border border-gray-400 rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
                   <!-- <div class="absolute w-[140%] h-px bg-gray-400 rotate-45 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div> -->
                   <div class="absolute w-[140%] h-px bg-gray-400 -rotate-45 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                  <div class="text-gray-400 z-10 w-fit h-fit p-0.5 bg-white">{{ size.size }}</div>
+                  <div class="hover:text-white z-10 w-fit h-fit p-0.5 bg-white hover:bg-black transition-colors duration-200">{{ size.size }}</div>
                 </div>
-                <div v-else class="h-14 w-14 flex justify-center items-center bg-white border border-black rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
+                <div 
+                  v-else 
+                  @click="handleSize(size)"
+                  class="h-14 w-14 flex justify-center items-center bg-white border border-black rounded-md cursor-pointer hover:bg-black hover:text-white transition-colors duration-200">
                   <span>{{ size.size }}</span>
                 </div>
               </div>
             </div>
           </div>
 
-          <button class="w-full h-fit py-3 rounded-md bg-black text-white text-md font-bold mt-4 mb-8 disabled:bg-gray-400" :disabled="productDetails.variant.inStock !== true">Add to bag</button>
+          <button 
+            @click="handleAddToCart(productDetails.variant)"
+            class="w-full h-fit py-3 rounded-md bg-black text-white text-md font-bold mt-4 mb-8 disabled:bg-gray-400"
+            :disabled="productDetails.variant.inStock !== true || emptySize"
+            >
+            <span v-if="emptySize">Size Sold Out</span>
+            <span v-else-if="selectedSize === null">Pick Your Size</span>
+            <span v-else>Add to cart</span>
+          </button>
 
           <Accordion title="Shipping & Returns">
             <p>Free shipping worldwide on orders above 6000000 IDR.</p>
@@ -113,9 +159,55 @@
       </div>
     </div>
     <div class="md:hidden block mb-10">
+      <h1 v-if="productDetails.variant.outfits !== null" class="font-roco-black text-3xl md:text-4xl lg:text-6xl text-black mt-16 px-4">{{ productDetails.description }}</h1>
+      <div v-if="productDetails.variant.outfits !== null" class="mt-5 bg-white">
+        <div class="w-full px-4 sm:px-6 lg:px-8">
+          <Swiper
+          :modules="[Pagination]"
+          :pagination="{ clickable: true }"
+          :slides-per-view="3"
+          :space-between="32"
+          :breakpoints="{
+            320: { slidesPerView: 1, spaceBetween: 32 },
+            640: { slidesPerView: 2, spaceBetween: 32 }
+          }"
+          class="mb-6 overflow-hidden swiper"
+        >
+          <SwiperSlide v-for="item in productDetails.variant.outfits.url">
+            <div class="flex-shrink-0 text-center aspect-[1/2]">
+              <video
+                v-if="item.endsWith('.mp4')"
+                :src="item"
+                loop
+                autoplay
+                muted
+                playsinline
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+              />
+              <img 
+                v-else
+                :src="item"
+                alt="Dresses"
+                class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        </div>
+      </div>
+      <div v-if="productDetails.variant.outfits !== null" class="flex flex-col md:flex-row justify-between text-center gap-4 mt-5 w-72 mx-auto">
+        <span class="text-sm font-bold md:text-md">{{ productDetails.variant.outfits.modelName }} is {{ productDetails.variant.outfits.modelHeight }} and wears a size {{ productDetails.variant.outfits.modelSize }}</span>
+        <button 
+          @click="outfits.setSelectedOutfitId(productDetails.variant.outfits.id)"
+          class="self-center w-52 px-6 py-3 bg-black text-white font-bold hover:bg-gray-100 transition-colors duration-200 rounded-md"
+          >
+            Shop the Outfit
+        </button>
+      </div>
       <div v-for="detail in productDetails.variant.details" class="mb-10">
         <h1 class="font-roco-black text-3xl text-black mt-16 px-4 sm:px-6 md:px-11">{{ detail.info }}</h1>
-        <img :src="detail.image" class="h-full w-full mt-5" alt="">
+        <img :src="detail.image" class="h-full w-full mt-5" alt="" loading="lazy"/>
       </div>
       <div class="px-4 sm:px-6 md:px-11">
         <Accordion title="Usage">
@@ -201,7 +293,9 @@
 
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Pagination } from 'swiper/modules'
 import 'swiper/css'
+import 'swiper/css/pagination'
 import { QuestionMarkCircleIcon, ArrowUturnLeftIcon, ArchiveBoxIcon } from '@heroicons/vue/24/outline';
 
 const route = useRoute();
@@ -210,5 +304,35 @@ const useProducts = useProductsStore()
 const useProductDetails = useProductDetailsStore()
 const productDetails = useProductDetails.getProductBySlug(slug)
 const emailSubscription = ref('')
+const outfits = useOutfits()
+const cartStore = useCartStore()
+const selectedSize = ref(null)
+const emptySize = ref(false)
 
+function handleSize(size) {
+  selectedSize.value = size
+  if(size.stock === 0) {
+    emptySize.value = true
+  } else {
+    emptySize.value = false
+  }
+}
+
+function handleAddToCart(variant) {
+  if (!selectedSize.value || selectedSize.value.stock === 0) {
+    return
+  }
+
+  if (variant.inStock) {
+    cartStore.addToCart({
+      ...variant,
+      image: productDetails.variant.images[0],
+      selectedSize: selectedSize.value,
+      category: productDetails.category,
+      name: productDetails.name,
+      price: productDetails.price,
+      originalPrice: productDetails.originalPrice,
+    })
+  }
+}
 </script>

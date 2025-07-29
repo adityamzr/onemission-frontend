@@ -27,16 +27,16 @@
             </button>
           </div>
           <!-- Body -->
-          <div class="mt-10 mb-20 w-full px-3 flex flex-col space-y-12 font-fira">
+          <div class="mt-10 mb-20 w-full px-3 flex flex-col space-y-12">
             <div v-for="outfitItem in selectedOutfit.outfitItems" class="flex flex-row space-x-2">
               <NuxtLink :to="`/products/shop-all/item/${outfitItem.slug}`" class="shrink-0 w-40 h-32 cursor-pointer" @click="outfits.closeOutfitDrawer">
-                <img :src="outfitItem.images[0]" :alt="outfitItem.slug">
+                <img :src="outfitItem.image" :alt="outfitItem.slug" loading="lazy">
               </NuxtLink>
               <div class="flex flex-col space-y-2 w-full">
                 <h4 class="font-bold text-sm">{{ outfitItem.name }}</h4>
                 <div class="flex justify-between">
-                  <span class="text-xs font-medium">Black</span>
-                  <span class="text-xs font-medium">Rp 120.000</span>
+                  <span class="text-xs font-medium">{{ outfitItem.color }}</span>
+                  <span class="text-xs font-medium">{{ formatPrice(outfitItem.price) }}</span>
                 </div>
                 <div class="flex justify-between space-x-2">
                   <Dropdown class="w-[70%]" :options="outfitItem.sizes" :inStock="outfitItem.inStock" @size="handleSize"/>

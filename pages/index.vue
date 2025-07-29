@@ -7,6 +7,7 @@
           :src="bannerSrc"
           alt="Fashion Hero"
           class="w-full h-full object-cover"
+          loading="lazy"
         />
         <div class="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
@@ -46,12 +47,23 @@
           <div 
             v-for="(outfit) in outfits.data"
             @click="outfits.setSelectedOutfitId(outfit.id)"
-            class="group cursor-pointer">
+            class="group">
             <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto rounded-sm">
+              <video
+                v-if="outfit.url[0].endsWith('.mp4')"
+                :src="outfit.url[0]"
+                loop
+                autoplay
+                muted
+                playsinline
+                class="min-h-96 object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+              />
               <img 
-                :src="outfit.url"
+                v-else
+                :src="outfit.url[0]"
                 alt="Dresses"
                 class="min-h-96 object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
             </div>
           </div>
@@ -60,12 +72,23 @@
 
       <div v-else class="w-full px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-          <div v-for="outfit in outfits.data" @click="outfits.setSelectedOutfitId(outfit.id)" class="group cursor-pointer">
-            <div class="relative overflow-hidden bg-gray-100 rounded-sm aspect-auto">
+          <div v-for="outfit in outfits.data" @click="outfits.setSelectedOutfitId(outfit.id)" class="group">
+            <div class="relative overflow-hidden rounded-sm aspect-[1/2]">
+              <video
+                v-if="outfit.url[0].endsWith('.mp4')"
+                :src="outfit.url[0]"
+                loop
+                autoplay
+                muted
+                playsinline
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none"
+              />
               <img 
-                :src="outfit.url" 
+                v-else
+                :src="outfit.url[0]" 
                 alt="Blazers"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
             </div>
           </div>
@@ -101,6 +124,7 @@
               :src="getImage(product, index)"
               :alt="product.name"
               class="mb-10"
+              loading="lazy"
               @mouseenter="hoveredVariant[index] = product.slug"
               @mouseleave="hoveredVariant[index] = null"
             />
@@ -138,7 +162,7 @@
                 @mouseleave="hoveredVariant[index] = null"
                 class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-transparent hover:border-gray-700 cursor-pointer">
                 <span
-                  class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full cursor-pointer"
+                  class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full"
                   :class="{ 'border border-gray-200': item.colorCode === '#fff' || item.colorCode === '#f8f8f8' }"
                   :style="{ backgroundColor: item.colorCode }"
                 ></span>
@@ -186,6 +210,7 @@
                 src="/public/images/features/1.jpg" 
                 alt="Blazers"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -201,6 +226,7 @@
                 src="/public/images/features/2.jpg" 
                 alt="Dresses"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -216,6 +242,7 @@
                 src="/public/images/features/3.jpg" 
                 alt="Outerwear"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
@@ -245,7 +272,7 @@
         class="mb-6 overflow-hidden swiper"
       >
         <SwiperSlide v-for="(img, idx) in gallery" :key="idx">
-          <img :src="img" alt="gallery foto" class="w-full aspect-[2:3]" />
+          <img :src="img" alt="gallery foto" class="w-full aspect-[2:3]" loading="lazy" />
         </SwiperSlide>
       </Swiper>
       </div>

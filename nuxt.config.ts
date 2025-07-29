@@ -6,7 +6,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
   ],
   css: ['~/assets/css/main.css', '~/assets/css/fonts.css'],
   app: {

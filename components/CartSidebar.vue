@@ -47,9 +47,10 @@
                 class="flex items-start space-x-4 py-4 border-b border-gray-100 last:border-b-0"
               >
                 <img 
-                  :src="item.images[0]" 
+                  :src="item.image" 
                   :alt="item.name"
                   class="shrink-0 w-40 h-32 object-cover"
+                  loading="lazy"
                 />
                 <div class="flex-1 min-w-0">
                   <h3 class="text-sm font-medium text-black truncate">{{ item.name }}</h3>

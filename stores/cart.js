@@ -70,7 +70,6 @@ export const useCartStore = defineStore("cart", {
           addedAt: new Date(),
         });
       }
-      console.log(this.items);
     },
 
     removeFromCart(productId, size) {

@@ -75,11 +75,60 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/auralite-shirt-pigment-burgundy-1.webp",
             "/images/products/auralite-shirt-pigment-burgundy-2.webp",
           ],
-          outfitUrl: [
-            "/images/outfits/auralite-shirt-pigment-burgundy-outfit-1.mp4",
-            "/images/outfits/auralite-shirt-pigment-burgundy-outfit-2.webp",
-            "/images/outfits/auralite-shirt-pigment-burgundy-outfit-3.webp",
-          ],
+          outfits: {
+            id: 1,
+            modelName: "Farhan",
+            modelHeight: "180 cm",
+            modelSize: "M",
+            url: [
+              "/images/outfits/auralite-shirt-pigment-burgundy-outfit-1.mp4",
+              "/images/outfits/auralite-shirt-pigment-burgundy-outfit-2.webp",
+              "/images/outfits/auralite-shirt-pigment-burgundy-outfit-3.webp",
+            ],
+            outfitItems: [
+              {
+                id: 1,
+                variantId: 1,
+                name: "Auralite Shirt",
+                slug: "auralite-shirt-pigment-burgundy",
+                price: 120000,
+                originalPrice: 300000,
+                category: "shirts",
+                color: "Pigment Burgundy",
+                image:
+                  "/images/products/auralite-shirt-pigment-burgundy-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 0 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+              },
+              {
+                id: 2,
+                variantId: 1,
+                name: "Justice Cordura",
+                slug: "justice-cordura-off-white",
+                price: 120000,
+                originalPrice: 300000,
+                category: "vests",
+                color: "Off White",
+                image: "/images/products/justice-cordura-off-white-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 2 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+                isActive: true,
+              },
+            ],
+            isShown: true,
+          },
           details: [
             {
               title: "Ripstop Shell",
@@ -164,7 +213,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/justice-cordura-off-white-1.webp",
             "/images/products/justice-cordura-off-white-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Reinforced Zippers",
@@ -246,7 +295,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/merino-socks-black-1.webp",
             "/images/products/merino-socks-black-2.webp",
           ],
-          outfitUrl: [],
+          oputfits: null,
           details: [
             {
               title: "Reinforced Toe",
@@ -315,7 +364,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/merino-socks-off-white-1.webp",
             "/images/products/merino-socks-off-white-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Reinforced Toe",
@@ -377,7 +426,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/peaceshell-cap-quicksilver-1.webp",
             "/images/products/peaceshell-cap-quicksilver-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Inner Lining",
@@ -445,7 +494,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/repossessed-auralite-dusk-1.webp",
             "/images/products/repossessed-auralite-dusk-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Ripstop Shell",
@@ -512,7 +561,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/repossessed-auralite-olive-1.webp",
             "/images/products/repossessed-auralite-olive-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Ripstop Shell",
@@ -587,10 +636,59 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/softcell-hoodie-aged-black-1.webp",
             "/images/products/softcell-hoodie-aged-black-2.webp",
           ],
-          outfitUrl: [
-            "/images/outfits/softcell-hoodie-aged-black-outfit-1.webp",
-            "/images/outfits/softcell-hoodie-aged-black-outfit-2.webp",
-          ],
+          outfits: {
+            id: 1,
+            modelName: "John",
+            modelHeight: "160 cm",
+            modelSize: "M",
+            url: [
+              "/images/outfits/softcell-hoodie-aged-black-outfit-1.webp",
+              "/images/outfits/softcell-hoodie-aged-black-outfit-2.webp",
+            ],
+            outfitItems: [
+              {
+                id: 1,
+                variantId: 1,
+                name: "Auralite Shirt",
+                slug: "auralite-shirt-pigment-burgundy",
+                price: 120000,
+                originalPrice: 300000,
+                category: "shirts",
+                color: "Pigment Burgundy",
+                image:
+                  "/images/products/auralite-shirt-pigment-burgundy-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 0 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+              },
+              {
+                id: 2,
+                variantId: 1,
+                name: "Justice Cordura",
+                slug: "justice-cordura-off-white",
+                price: 120000,
+                originalPrice: 300000,
+                category: "vests",
+                color: "Off White",
+                image: "/images/products/justice-cordura-off-white-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 2 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+                isActive: true,
+              },
+            ],
+            isShown: true,
+          },
           details: [
             {
               title: "Fleece Lining",
@@ -662,7 +760,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/space_o-singlet-deep-mahogany-1.webp",
             "/images/products/space_o-singlet-deep-mahogany-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Ultra-Light Fabric",
@@ -730,10 +828,59 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/space_o-singlet-falcon-1.webp",
             "/images/products/space_o-singlet-falcon-2.webp",
           ],
-          outfitUrl: [
-            "/images/outfits/space_o-singlet-falcon-outfit-1.webp",
-            "/images/outfits/space_o-singlet-falcon-outfit-2.webp",
-          ],
+          outfits: {
+            id: 1,
+            modelName: "Zaki",
+            modelHeight: "178 cm",
+            modelSize: "XL",
+            url: [
+              "/images/outfits/space_o-singlet-falcon-outfit-1.webp",
+              "/images/outfits/space_o-singlet-falcon-outfit-2.webp",
+            ],
+            outfitItems: [
+              {
+                id: 1,
+                variantId: 1,
+                name: "Auralite Shirt",
+                slug: "auralite-shirt-pigment-burgundy",
+                price: 120000,
+                originalPrice: 300000,
+                category: "shirts",
+                color: "Pigment Burgundy",
+                image:
+                  "/images/products/auralite-shirt-pigment-burgundy-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 0 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+              },
+              {
+                id: 2,
+                variantId: 1,
+                name: "Justice Cordura",
+                slug: "justice-cordura-off-white",
+                price: 120000,
+                originalPrice: 300000,
+                category: "vests",
+                color: "Off White",
+                image: "/images/products/justice-cordura-off-white-1.webp",
+                inStock: true,
+                sizes: [
+                  { id: 1, size: "XS", stock: 2 },
+                  { id: 2, size: "S", stock: 5 },
+                  { id: 3, size: "M", stock: 10 },
+                  { id: 4, size: "L", stock: 15 },
+                  { id: 5, size: "XL", stock: 0 },
+                ],
+                isActive: true,
+              },
+            ],
+            isShown: true,
+          },
           details: [
             {
               title: "Ultra-Light Fabric",
@@ -804,7 +951,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/techsilk-short-black-silk-1.webp",
             "/images/products/techsilk-short-black-silk-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Elastic Waistband",
@@ -869,7 +1016,7 @@ export const useProductDetailsStore = defineStore("productDetails", {
             "/images/products/techsilk-short-falcon-1.webp",
             "/images/products/techsilk-short-falcon-2.webp",
           ],
-          outfitUrl: [],
+          outfits: null,
           details: [
             {
               title: "Elastic Waistband",
