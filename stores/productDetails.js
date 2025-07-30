@@ -649,14 +649,13 @@ export const useProductDetailsStore = defineStore("productDetails", {
               {
                 id: 1,
                 variantId: 1,
-                name: "Auralite Shirt",
-                slug: "auralite-shirt-pigment-burgundy",
+                name: "Sfotcell Hoodie",
+                slug: "softcell-hoodie-aged-black",
                 price: 120000,
                 originalPrice: 300000,
                 category: "shirts",
-                color: "Pigment Burgundy",
-                image:
-                  "/images/products/auralite-shirt-pigment-burgundy-1.webp",
+                color: "Aged Black",
+                image: "/images/products/softcell-hoodie-aged-black-1.webp",
                 inStock: true,
                 sizes: [
                   { id: 1, size: "XS", stock: 0 },
@@ -841,14 +840,13 @@ export const useProductDetailsStore = defineStore("productDetails", {
               {
                 id: 1,
                 variantId: 1,
-                name: "Auralite Shirt",
-                slug: "auralite-shirt-pigment-burgundy",
+                name: "Space-O Singlet",
+                slug: "space_o-singlet-falcon",
                 price: 120000,
                 originalPrice: 300000,
                 category: "shirts",
-                color: "Pigment Burgundy",
-                image:
-                  "/images/products/auralite-shirt-pigment-burgundy-1.webp",
+                color: "Falcon",
+                image: "/images/products/space_o-singlet-falcon-1.webp",
                 inStock: true,
                 sizes: [
                   { id: 1, size: "XS", stock: 0 },
