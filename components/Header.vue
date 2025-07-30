@@ -1,13 +1,18 @@
 <template>
-  <header class="fixed top-0 left-0 z-40 transition-transform duration-300 bg-white">
+  <header class="fixed top-0 left-0 z-40 w-full transition-colors duration-200"
+    :class="{
+      'bg-white': isScrolled,
+      'bg-transparent': !isScrolled
+    }">
     <div class="z-40 bg-black flex items-center justify-center h-8">
       <span class="text-white text-[9px] md:text-xs font-medium">ALL PRICES INCLUDE TAXES AND CUSTOMS DUTIES.</span>
     </div>
     <div class="w-screen mx-auto px-4 py-2 sm:px-6 sm:py-4 lg:px-11">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
-        <NuxtLink to="/" class="text-2xl lg:text-4xl font-bold text-black">
-          <img src="/public/images/logo/onemission-black-logo.png" class="h-5 md:h-8" alt="logo onemission" loading="lazy"/>
+        <NuxtLink to="/" class="text-2xl lg:text-4xl font-bold">
+          <img v-if="isScrolled" src="/public/images/logo/onemission-black-logo.webp" class="h-5 md:h-8" alt="logo onemission" loading="lazy"/>
+          <img v-else src="/public/images/logo/onemission-white-logo.webp" class="h-[37px] md:h-[60px]" alt="logo onemission" loading="lazy"/>
         </NuxtLink>
 
         <div class="flex items-center justify-between">
@@ -15,14 +20,20 @@
           <nav class="hidden mx-16 md:flex space-x-8">
             <NuxtLink 
               to="/products/shop-all" 
-              class="hover:text-gray-600 font-medium text-black transition-colors duration-200"
-            >
+              class="hover:text-gray-600 font-medium transition-colors duration-200"
+              :class="{
+                'text-black': isScrolled,
+                'text-white': !isScrolled
+              }">
               SHOP
             </NuxtLink>
             <NuxtLink 
             to="" 
-              class="hover:text-gray-600 font-medium text-black transition-colors duration-200"
-            >
+              class="hover:text-gray-600 font-medium transition-colors duration-200"
+              :class="{
+                'text-black': isScrolled,
+                'text-white': !isScrolled
+              }">
               CUSTOMER SERVICE
             </NuxtLink>
           </nav>
@@ -32,8 +43,11 @@
             <!-- Search Button -->
             <button 
               @click="toggleSearch"
-              class="p-2 hover:text-gray-600 text-black transition-colors duration-200"
-            >
+              class="p-2 hover:text-gray-600 transition-colors duration-200"
+              :class="{
+                'text-black': isScrolled,
+                'text-white': !isScrolled
+              }">
               <MagnifyingGlassIcon class="h-5 w-5" />
             </button>
   
@@ -45,13 +59,19 @@
   
             <button 
               @click="cartStore.toggleCart()" 
-              class="relative p-2  hover:text-gray-600 text-black transition-colors duration-200"
-            >
+              class="relative p-2  hover:text-gray-600 transition-colors duration-200"
+              :class="{
+                'text-black': isScrolled,
+                'text-white': !isScrolled
+              }">
               <ShoppingBagIcon class="h-5 w-5" />
               <span 
                 v-if="cartStore.itemCount > 0"
-                class="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
-              >
+                class="absolute -top-1 -right-1 text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                :class="{
+                  ' bg-black text-white': isScrolled,
+                  ' bg-white text-black ': !isScrolled
+                }">
                 {{ cartStore.itemCount }}
               </span>
             </button>
@@ -59,8 +79,11 @@
             <!-- Mobile Menu Button -->
             <button 
               @click="toggleMobileMenu"
-              class="md:hidden p-2 text-black transition-colors duration-200"
-            >
+              class="md:hidden p-2 transition-colors duration-200"
+              :class="{
+                'text-black': isScrolled,
+                'text-white': !isScrolled
+              }">
               <Bars3Icon v-if="!isMobileMenuOpen" class="h-5 w-5" />
               <XMarkIcon v-else class="h-5 w-5" />
             </button>
@@ -103,7 +126,7 @@
             HOME
           </NuxtLink>
           <NuxtLink 
-            to="/products" 
+            to="/products/shop-all" 
             class="block text-gray-600 font-medium hover:text-black transition-colors duration-200"
             @click="toggleMobileMenu"
           >
@@ -132,12 +155,15 @@ import {
 } from '@heroicons/vue/24/outline'
 import { useCartStore } from '~/stores/cart'
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 
 const cartStore = useCartStore()
-
+const route = useRoute()
+const isIndex = computed(() => route.path === '/')
 const isSearchOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const searchQuery = ref('')
+const isScrolled = ref(false)
 
 const toggleSearch = () => {
   isSearchOpen.value = !isSearchOpen.value
@@ -150,8 +176,36 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
 }
 
+const handleScroll = () => {
+  isScrolled.value = !isIndex.value || window.scrollY > 0
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  if (isIndex.value) {
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+  } else {
+    isScrolled.value = true
+  }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
 // Close mobile menu on route change
-watch(() => useRoute().path, () => {
+watch(() => route.path, () => {
   isMobileMenuOpen.value = false
+})
+
+watch(() => route.path, () => {
+  if (isIndex.value) {
+    window.addEventListener('scroll', handleScroll)
+    handleScroll()
+  } else {
+    window.removeEventListener('scroll', handleScroll)
+    isScrolled.value = true
+  }
 })
 </script>

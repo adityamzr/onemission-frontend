@@ -1,7 +1,7 @@
 <template>
   <div>
      <!-- Hero Section -->
-    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden mt-20 md:mt-24">
+    <section class="relative h-screen flex items-end md:items-center justify-center md:justify-start overflow-hidden">
       <div class="absolute bottom-0 left-0 right-0 w-full bg-gradient-to-b from-transparent to-white pointer-events-none h-60 z-10"></div>
       <div class="absolute inset-0 z-0">
         <img
@@ -13,16 +13,16 @@
         <div class="absolute inset-0 bg-black bg-opacity-20"></div>
       </div>
       
-      <div class="relative z-10 text-center md:text-start text-white px-10 md:px-12 mb-32 md:mb-4">
-        <h1 class="font-roco-black text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
-          Timeless
-          <span class="block">Elegance</span>
+      <div class="relative flex flex-col h-full justify-center items-center md:items-start z-10 text-center md:text-start text-white px-10 md:px-12">
+        <h1 class="font-roco-black text-7xl md:text-9xl font-bold mb-1 animate-fade-in">
+          awrahfit
+          <!-- <span class="block">Elegance</span> -->
         </h1>
-        <p class="text-xl md:text-2xl mb-4 max-w-2xl mx-auto animate-slide-up">
-          Discover our curated collection of premium fashion that transcends trends
-        </p>
-        <div class="flex flex-col md:flex-row flex-wrap justify-between md:justify-start gap-4 animate-slide-up">
-          <NuxtLink to="/products/shop-all" class="btn-primary text-md md:text-lg rounded-md bg-white text-black font-bold hover:bg-gray-100">
+        <span class="text-md w-full flex justify-end md:justify-center text-center tracking-[0.2rem] md:tracking-[0.5rem] md:text-2xl mb-10 animate-slide-up">
+          BRING BACK THE VALUE
+        </span>
+        <div class="flex flex-col md:flex-row flex-wrap justify-center gap-4 animate-slide-up">
+          <NuxtLink to="/products/shop-all" class="btn-primary w-fit md:w-44 text-center tracking-wider font-roco-black text-lg md:text-lg rounded-full bg-white text-black hover:bg-gray-100">
             SHOP NOW
           </NuxtLink>
         </div>
@@ -33,8 +33,8 @@
     <section class="py-14 md:py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12 md:mb-20">
-          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">Choose Your Outfit</h2>
-          <h5 class="text-[10px] md:text-xs font-medium text-black">FOR SPORTS GYM OR RUN</h5>
+          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black mb-1">Pick Your Style</h2>
+          <h5 class="text-[10px] md:text-xs font-semibold text-black tracking-[0.2rem]">OWN THE OUTFIT CRUSH YOUR LIMIT</h5>
         </div>
       </div>
 
@@ -49,7 +49,7 @@
             v-for="(outfit) in outfits.data"
             @click="outfits.setSelectedOutfitId(outfit.id)"
             class="group">
-            <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-auto rounded-sm">
+            <div class="flex-shrink-0 w-36 md:w-80 text-center aspect-[1/2] rounded-sm">
               <video
                 v-if="outfit.url[0].endsWith('.mp4')"
                 :src="outfit.url[0]"
@@ -98,157 +98,29 @@
 
     </section>
 
-   
-
-    <!-- New Arrivals -->
-    <section class="py-14 md:py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
-        <div class="text-center mb-0 md:mb-16">
-          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black">New Arrivals</h2>
-          <h5 class="text-[10px] md:text-xs font-medium text-black">CHECK OUR LATEST PRODUCTS</h5>
-        </div>
-      </div>
-      <div class="relative py-10 md:py-14">
-        <!-- Slider Container -->
-        <div
-          ref="slider"
-          class="flex overflow-x-auto scroll-smooth space-x-6 pb-4"
-          style="scrollbar-width: none; -ms-overflow-style: none;"
-        >
-          <div
-            v-for="(product, index) in productsStore.latestProducts"
-            :key="index"
-            class="flex-shrink-0 w-60 md:w-80 text-center relative"
-            >
-            <NuxtLink :to="`/products/shop-all/item/${product.slug}`">
-            <img
-              :src="getImage(product, index)"
-              :alt="product.name"
-              class="mb-10"
-              loading="lazy"
-              @mouseenter="hoveredVariant[index] = product.slug"
-              @mouseleave="hoveredVariant[index] = null"
-            />
-            <!-- Discount Badge -->
-            <div 
-              v-if="product.discount" 
-              class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
-            >
-              -{{ product.discount }}%
-            </div>
-            
-            <div class="text-center w-full">
-              <h3 class="text-md md:text-lg lg:text-xl font-extrabold text-black mb-1">{{ product.name }}</h3>
-              <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
-                <span class="text-md font-medium text-black">{{ formatPrice(product.price) }}</span>
-                <span 
-                  v-if="product.originalPrice" 
-                  class="text-sm text-gray-500 line-through"
-                >
-                  {{ formatPrice(product.originalPrice) }}
-                </span>
-              </div>
-            </div>
-            </NuxtLink>
-            <!-- COLORS -->
-            <div class="flex justify-center space-x-2 mt-2">
-              <div class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-gray-400 cursor-pointer">
-                <span :style="{ background: product.colorCode }" class="w-2.5 h-2.5 md:w-[18px] md:h-[18px] rounded-full"></span>
-              </div>
-              <NuxtLink
-                v-for="item in product.otherVariants" 
-                :key="item.slug"
-                :to="`/products/shop-all/item/${item.slug}`"
-                @mouseenter="hoveredVariant[index] = item.slug"
-                @mouseleave="hoveredVariant[index] = null"
-                class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-transparent hover:border-gray-700 cursor-pointer">
-                <span
-                  class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full"
-                  :class="{ 'border border-gray-200': item.colorCode === '#fff' || item.colorCode === '#f8f8f8' }"
-                  :style="{ backgroundColor: item.colorCode }"
-                ></span>
-              </NuxtLink>
-            </div>
-          </div>
-        </div>
-
-        <!-- Left Button -->
-        <button
-          v-if=!isMobile
-          @click="scrollLeft"
-          class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-
-        <!-- Right Button -->
-        <button
-          v-if=!isMobile
-          @click="scrollRight"
-          class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-      <div class="text-center">
-        <NuxtLink to="/products/shop-all" class="btn-primary font-bold rounded-md">
-          Shop All
-        </NuxtLink>
-      </div>
-    </section>
-
-    <!-- Featured Categories 1 -->
+   <!-- Featured Categories 1 -->
     <section class="py-7 md:py-14 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 md:mb-20">
+          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black mb-1">Values Matter</h2>
+          <h5 class="text-[10px] md:text-xs font-semibold text-black tracking-[0.2rem]">FOR EVERY ACTIVITIES</h5>
+        </div>
+      </div>
       <div class="w-full px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
+        <div class="grid grid-cols-3 gap-2">
+          <div v-for="item in featured" class="group cursor-pointer card-hover">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-xl">
+              <div class="absolute top-0 left-0 bg-black opacity-15 w-full h-full"></div>
               <img 
-                src="/public/images/features/1.jpg" 
+                :src="item.image" 
                 alt="Blazers"
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
               />
               <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
               <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Tops</h3>
-                <p class="text-lg opacity-90">Professional elegance</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
-              <img 
-                src="/public/images/features/2.jpg" 
-                alt="Dresses"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Shorts</h3>
-                <p class="text-lg opacity-90">Effortless sophistication</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="group cursor-pointer card-hover">
-            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] rounded-sm">
-              <img 
-                src="/public/images/features/3.jpg" 
-                alt="Outerwear"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 group-hover:bg-opacity-30 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
-                <h3 class=" text-5xl xl:text-6xl font-bold mb-2">Headwear</h3>
-                <p class="text-lg opacity-90">Statement pieces</p>
+                <h3 class="font-roco-black text-xl tracking-wide xl:text-6xl mb-1">{{ item.title }}</h3>
+                <!-- <p class="text-lg opacity-90">{{ item.subtitle }}</p> -->
               </div>
             </div>
           </div>
@@ -256,7 +128,79 @@
       </div>
     </section>
 
-    <!-- Featured Categories 2 -->
+    <!-- Cover The Awrah -->
+    <section class="py-14 md:py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-11">
+        <div class="text-center mb-0 md:mb-16">
+          <h2 class="font-roco-black text-5xl md:text-7xl font-bold text-black mb-1">Cover The Awrah</h2>
+          <h5 class="text-[10px] md:text-xs font-semibold text-black tracking-[0.2rem]">DRESSING WITH DIGNITY</h5>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+        <div
+          v-for="(product, index) in productsStore.latestProducts"
+          :key="index"
+          class="flex-shrink-0 text-center relative"
+          >
+          <NuxtLink :to="`/products/shop-all/item/${product.slug}`">
+          <img
+            :src="getImage(product, index)"
+            :alt="product.name"
+            class="mb-10"
+            loading="lazy"
+            @mouseenter="hoveredVariant[index] = product.slug"
+            @mouseleave="hoveredVariant[index] = null"
+          />
+          <!-- Discount Badge -->
+          <div 
+            v-if="product.discount" 
+            class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
+          >
+            -{{ product.discount }}%
+          </div>
+          
+          <div class="text-center w-full">
+            <h3 class="text-md md:text-lg lg:text-xl font-extrabold text-black mb-1">{{ product.name }}</h3>
+            <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
+              <span class="text-md font-medium text-black">{{ formatPrice(product.price) }}</span>
+              <span 
+                v-if="product.originalPrice" 
+                class="text-sm text-gray-500 line-through"
+              >
+                {{ formatPrice(product.originalPrice) }}
+              </span>
+            </div>
+          </div>
+          </NuxtLink>
+          <!-- COLORS -->
+          <div class="flex justify-center space-x-2 mt-2">
+            <div class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-gray-400 cursor-pointer">
+              <span :style="{ background: product.colorCode }" class="w-2.5 h-2.5 md:w-[18px] md:h-[18px] rounded-full"></span>
+            </div>
+            <NuxtLink
+              v-for="item in product.otherVariants" 
+              :key="item.slug"
+              :to="`/products/shop-all/item/${item.slug}`"
+              @mouseenter="hoveredVariant[index] = item.slug"
+              @mouseleave="hoveredVariant[index] = null"
+              class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-transparent hover:border-gray-700 cursor-pointer">
+              <span
+                class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full"
+                :class="{ 'border border-gray-200': item.colorCode === '#fff' || item.colorCode === '#f8f8f8' }"
+                :style="{ backgroundColor: item.colorCode }"
+              ></span>
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <NuxtLink to="/products/shop-all" class="btn-primary w-fit md:w-44 text-center tracking-wider font-roco-black text-lg md:text-lg rounded-full bg-black text-white hover:bg-gray-100">
+          Shop All
+        </NuxtLink>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
     <section class="py-7 md:py-14 bg-white">
       <div class="w-full px-4 sm:px-6 lg:px-8">
         <Swiper
@@ -291,12 +235,12 @@
           <input 
             type="email" 
             placeholder="Enter your email"
-            class="flex-1 px-4 py-3 bg-white text-black focus:outline-none rounded-md"
+            class="flex-1 px-4 py-3 bg-white text-black focus:outline-none rounded-full"
             v-model="emailSubscription"
           />
           <button 
             type="submit"
-            class="px-6 py-3 bg-white text-black font-bold hover:bg-gray-100 transition-colors duration-200 rounded-md"
+            class="px-6 py-3 btn-primary w-full md:w-fit text-center tracking-wider font-roco-black text-lg md:text-lg rounded-full bg-white text-black hover:bg-gray-100"
           >
             Subscribe
           </button>
@@ -348,6 +292,14 @@ const gallery = ref([
   '/images/gallery/gallery-4.webp',
   '/images/gallery/gallery-5.webp',
   '/images/gallery/gallery-6.webp',
+])
+const featured = ref([
+  { title: 'Run', subtitle: '', image: '/images/features/1.webp' },
+  { title: 'Pray', subtitle: '', image: '/images/features/2.webp' },
+  { title: 'Gym', subtitle: '', image: '/images/features/3.webp' },
+  { title: 'Ride', subtitle: '', image: '/images/features/4.webp' },
+  { title: 'Sports', subtitle: '', image: '/images/features/5.webp' },
+  { title: 'Casual', subtitle: '', image: '/images/features/6.webp' }
 ])
 
 const getImage = (product, index) => {

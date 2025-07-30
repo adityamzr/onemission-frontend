@@ -1,0 +1,86 @@
+<div class="relative py-10 md:py-14">
+        <!-- Slider Container -->
+        <div
+          ref="slider"
+          class="flex overflow-x-auto scroll-smooth space-x-6 pb-4"
+          style="scrollbar-width: none; -ms-overflow-style: none;"
+        >
+          <div
+            v-for="(product, index) in productsStore.latestProducts"
+            :key="index"
+            class="flex-shrink-0 w-60 md:w-80 text-center relative"
+            >
+            <NuxtLink :to="`/products/shop-all/item/${product.slug}`">
+            <img
+              :src="getImage(product, index)"
+              :alt="product.name"
+              class="mb-10"
+              loading="lazy"
+              @mouseenter="hoveredVariant[index] = product.slug"
+              @mouseleave="hoveredVariant[index] = null"
+            />
+            <!-- Discount Badge -->
+            <div 
+              v-if="product.discount" 
+              class="absolute top-0 right-0 bg-rose-500 text-white px-2 py-1 text-xs font-medium"
+            >
+              -{{ product.discount }}%
+            </div>
+            
+            <div class="text-center w-full">
+              <h3 class="text-md md:text-lg lg:text-xl font-extrabold text-black mb-1">{{ product.name }}</h3>
+              <div class="flex flex-col md:flex-row items-center justify-center space-x-2">
+                <span class="text-md font-medium text-black">{{ formatPrice(product.price) }}</span>
+                <span 
+                  v-if="product.originalPrice" 
+                  class="text-sm text-gray-500 line-through"
+                >
+                  {{ formatPrice(product.originalPrice) }}
+                </span>
+              </div>
+            </div>
+            </NuxtLink>
+            <!-- COLORS -->
+            <div class="flex justify-center space-x-2 mt-2">
+              <div class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-gray-400 cursor-pointer">
+                <span :style="{ background: product.colorCode }" class="w-2.5 h-2.5 md:w-[18px] md:h-[18px] rounded-full"></span>
+              </div>
+              <NuxtLink
+                v-for="item in product.otherVariants" 
+                :key="item.slug"
+                :to="`/products/shop-all/item/${item.slug}`"
+                @mouseenter="hoveredVariant[index] = item.slug"
+                @mouseleave="hoveredVariant[index] = null"
+                class="w-4 h-4 md:w-6 md:h-6 flex items-center justify-center rounded-full border border-transparent hover:border-gray-700 cursor-pointer">
+                <span
+                  class="w-3 h-3 md:w-[18px] md:h-[18px] rounded-full"
+                  :class="{ 'border border-gray-200': item.colorCode === '#fff' || item.colorCode === '#f8f8f8' }"
+                  :style="{ backgroundColor: item.colorCode }"
+                ></span>
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Button -->
+        <button
+          v-if=!isMobile
+          @click="scrollLeft"
+          class="absolute left-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+
+        <!-- Right Button -->
+        <button
+          v-if=!isMobile
+          @click="scrollRight"
+          class="absolute right-10 top-1/2 transform -translate-y-1/2 bg-white border rounded-full p-2 shadow hover:bg-gray-100"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>

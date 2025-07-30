@@ -304,7 +304,7 @@ export const useProductsStore = defineStore("products", {
     },
 
     latestProducts: (state) => {
-      return [...state.products].sort((a, b) => b.id - a.id).slice(0, 6);
+      return [...state.products].sort((a, b) => b.id - a.id).slice(0, 4);
     },
 
     featuredProducts: (state) =>
